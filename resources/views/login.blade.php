@@ -5,7 +5,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: url('/kantor.jpg') no-repeat center center fixed;
+            background: url('/kantor.jpeg') no-repeat center center fixed;
             background-size: cover;
             display: flex;
             justify-content: center;

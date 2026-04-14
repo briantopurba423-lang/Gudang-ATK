@@ -3,16 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-class AuthController extends Controller
-{
-    //
-}
-<?php
-
-namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
@@ -42,7 +32,7 @@ class AuthController extends Controller
             Session::put('role', $user->role);
             Session::put('status', 'login');
 
-            return redirect()->route('dashboard');
+            return redirect()->route('index');
         }
 
         return back()->with('error', 'Username, password, atau role salah!');
