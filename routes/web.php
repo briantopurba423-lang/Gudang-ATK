@@ -1,16 +1,23 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\BarangController;
+use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\TransaksiController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-use App\Http\Controllers\DashboardController;
+Route::get('/home', [HomeController::class, 'index']);
 
-Route::get('/home', [DashboardController::class, 'index']);
-use App\Http\Controllers\AuthController;
+Route::get('/index', [BarangController::class, 'index']);
 
-Route::get('/', [AuthController::class, 'showLogin']);
-Route::post('/login', [AuthController::class, 'login'])->name('login');
-Route::get('/dashboard', [AuthController::class, 'dashboard'])->middleware('auth');
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+
+// Barang
+Route::resource('barang', BarangController::class);
+
+// Supplier
+Route::resource('supplier', SupplierController::class);
+
+// Transaksi
+Route::post('/masuk', [TransaksiController::class, 'masuk']);
+Route::post('/keluar', [TransaksiController::class, 'keluar']);
