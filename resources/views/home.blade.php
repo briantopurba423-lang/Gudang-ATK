@@ -9,11 +9,12 @@
 body{
 margin:0;
 font-family:Arial;
-background:#f4f6f9;
+background:#eef2f7;
 }
 
+/* HEADER */
 header{
-background:linear-gradient(90deg,#1e3c72,#2a5298);
+background:linear-gradient(135deg,#4facfe,#6a11cb);
 color:white;
 padding:60px 20px;
 text-align:center;
@@ -28,17 +29,25 @@ display:inline-block;
 margin-top:20px;
 padding:12px 25px;
 background:white;
-color:#1e3c72;
+color:#4facfe;
 text-decoration:none;
 border-radius:30px;
 font-weight:bold;
+transition:0.3s;
 }
 
+.btn:hover{
+background:#ffd700;
+color:black;
+}
+
+/* SECTION */
 section{
 padding:60px 20px;
 text-align:center;
 }
 
+/* FEATURES */
 .features{
 display:flex;
 flex-wrap:wrap;
@@ -50,14 +59,20 @@ gap:20px;
 background:white;
 width:260px;
 padding:25px;
-border-radius:10px;
-box-shadow:0 4px 12px rgba(0,0,0,0.1);
+border-radius:15px;
+box-shadow:0 6px 15px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
 }
 
 .card h3{
-color:#1e3c72;
+color:#6a11cb;
 }
 
+/* STAT */
 .stat{
 display:flex;
 justify-content:center;
@@ -69,20 +84,66 @@ flex-wrap:wrap;
 .stat-box{
 background:white;
 padding:20px;
-border-radius:8px;
+border-radius:12px;
 width:200px;
-box-shadow:0 3px 8px rgba(0,0,0,0.1);
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.stat-box:hover{
+transform:scale(1.05);
 }
 
 .stat-box h2{
-color:#1e3c72;
+color:#4facfe;
 }
 
-.footer{
-background:#2c3e50;
+/* CONTACT */
+.contact{
+background:linear-gradient(135deg,#f6f9ff,#e0e7ff);
+}
+
+.contact-form{
+max-width:500px;
+margin:auto;
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.contact-form input,
+.contact-form textarea{
+padding:12px;
+border-radius:10px;
+border:1px solid #ccc;
+font-size:14px;
+}
+
+.contact-form button{
+padding:12px;
+border:none;
+background:linear-gradient(135deg,#4facfe,#6a11cb);
 color:white;
-padding:20px;
+border-radius:25px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.contact-form button:hover{
+opacity:0.85;
+}
+
+/* FOOTER */
+.footer{
+background:#1e293b;
+color:#cbd5e1;
+padding:30px 20px;
 text-align:center;
+}
+
+.footer p{
+margin:5px 0;
+font-size:14px;
 }
 </style>
 </head>
@@ -160,9 +221,38 @@ agar lebih cepat, akurat, dan efisien.
 
 </section>
 
-<div class="footer">
-© 2026 ATK Stock System
-</div>
+<!-- CONTACT -->
+<section class="contact">
+
+<h2>Hubungi Kami</h2>
+<p>Silakan kirim pesan jika ada pertanyaan</p>
+
+<form class="contact-form" onsubmit="kirimPesan(event)">
+<input type="text" id="nama" placeholder="Nama Anda" required>
+<input type="email" id="email" placeholder="Email" required>
+<textarea id="pesan" rows="5" placeholder="Pesan..." required></textarea>
+<button type="submit">Kirim Pesan</button>
+</form>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+<p>© 2026 ATK Stock System</p>
+<p>Email: support@atkstock.com | Telp: 0812-xxxx-xxxx</p>
+</footer>
+
+<script>
+function kirimPesan(e){
+e.preventDefault();
+
+let nama = document.getElementById("nama").value;
+
+alert("Terima kasih " + nama + "! Pesan kamu sudah dikirim 😊");
+
+document.querySelector(".contact-form").reset();
+}
+</script>
 
 </body>
 </html>
