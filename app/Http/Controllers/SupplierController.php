@@ -7,27 +7,33 @@ use App\Models\Supplier;
 
 class SupplierController extends Controller
 {
-   public function index()
-    {
-        $supplier = Supplier::all();
-        return view('supplier.index', compact('supplier'));
-    }
-
     public function store(Request $request)
     {
-        Supplier::create($request->all());
-        return back();
+        $request->validate([
+            'nama'   => 'required|string',
+            'kontak' => 'required|string',
+            'alamat' => 'nullable|string',
+        ]);
+
+        Supplier::create($request->only('nama', 'kontak', 'alamat'));
+        return redirect()->route('index')->with('success', 'Supplier berhasil ditambahkan.');
     }
 
     public function update(Request $request, $id)
     {
-        Supplier::findOrFail($id)->update($request->all());
-        return back();
+        $request->validate([
+            'nama'   => 'required|string',
+            'kontak' => 'required|string',
+            'alamat' => 'nullable|string',
+        ]);
+
+        Supplier::findOrFail($id)->update($request->only('nama', 'kontak', 'alamat'));
+        return redirect()->route('index')->with('success', 'Supplier berhasil diupdate.');
     }
 
     public function destroy($id)
     {
         Supplier::destroy($id);
-        return back();
+        return redirect()->route('index')->with('success', 'Supplier berhasil dihapus.');
     }
-} 
+}
