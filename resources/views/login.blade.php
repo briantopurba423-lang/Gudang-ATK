@@ -66,7 +66,7 @@
             <select name="role" required>
                 <option value="">-- Pilih Role --</option>
                 <option value="admin">Admin</option>
-                <option value="manajer">Manajer</option>
+                <option value="manager">Manager</option>
             </select>
 
             <button type="submit">Login</button>
