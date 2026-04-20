@@ -153,7 +153,7 @@ text-align:center;
 <h2>Tentang Aplikasi</h2>
 
 <p>
-Aplikasi Stok Gudang ATK membantu perusahaan atau sekolah
+Aplikasi Stok Gudang ATK membantu perusahaan
 mengelola persediaan alat tulis kantor secara digital
 agar lebih cepat, akurat, dan efisien.
 </p>
