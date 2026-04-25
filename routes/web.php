@@ -6,6 +6,7 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\ExportController;
 
 // Landing Page
 Route::get('/', [AuthController::class, 'home'])->name('home');
@@ -37,3 +38,6 @@ Route::post('/keluar', [TransaksiController::class, 'keluar'])->name('keluar');
 // Kategori
 Route::post('/kategori', [KategoriController::class, 'store'])->name('kategori.store');
 Route::delete('/kategori/{id}', [KategoriController::class, 'destroy'])->name('kategori.destroy');
+
+// Export
+Route::get('/export/excel', [ExportController::class, 'exportExcel'])->name('export.excel');

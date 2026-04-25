@@ -52,7 +52,7 @@
 <body>
 
     <div class="login-box">
-        <h2>Login Aplikasi Stok Gudang ATK</h2>
+        <h2>Stok Gudang ATK</h2>
 
         @if(session('error'))
             <div class="error">{{ session('error') }}</div>
