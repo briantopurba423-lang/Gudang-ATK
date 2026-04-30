@@ -62,6 +62,15 @@
 
         .alert { padding: 10px 16px; border-radius: 6px; margin-bottom: 16px; font-size: 13px; }
         .alert-error { background: #fdecea; color: #c0392b; }
+
+        .btn-export {
+            background: linear-gradient(135deg, #27ae60, #1e8449);
+            color: white; padding: 11px 24px; border-radius: 8px;
+            text-decoration: none; font-weight: bold; font-size: 14px;
+            box-shadow: 0 3px 10px rgba(39,174,96,0.3); transition: 0.2s;
+            white-space: nowrap;
+        }
+        .btn-export:hover { opacity: 0.88; transform: translateY(-1px); }
     </style>
 </head>
 <body>
@@ -92,6 +101,9 @@
             <h1>Selamat Datang, {{ Session::get('username') }}!</h1>
             <p>Ringkasan aktivitas inventaris gudang ATK.</p>
         </div>
+        <a href="{{ route('export.excel') }}" class="btn-export">
+            📥 Export Excel
+        </a>
     </div>
 
     <!-- STATS -->
@@ -205,9 +217,9 @@
 </div>
 
 <script>
-const labels = @json($chartLabels);
-const dataMasuk = @json($chartMasuk);
-const dataKeluar = @json($chartKeluar);
+const labels = {!! json_encode($chartLabels) !!};
+const dataMasuk = {!! json_encode($chartMasuk) !!};
+const dataKeluar = {!! json_encode($chartKeluar) !!};
 
 new Chart(document.getElementById('stockChart').getContext('2d'), {
     type: 'line',

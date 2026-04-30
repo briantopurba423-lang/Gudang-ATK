@@ -54,12 +54,12 @@
     <div class="login-box">
         <h2>Stok Gudang ATK</h2>
 
-        @if(session('error'))
-            <div class="error">{{ session('error') }}</div>
-        @endif
+        <?php if(session('error')): ?>
+            <div class="error"><?php echo e(session('error')); ?></div>
+        <?php endif; ?>
 
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
+        <form method="POST" action="<?php echo e(route('login')); ?>">
+            <?php echo csrf_field(); ?>
             <input type="text" name="username" placeholder="Username" required>
             <input type="password" name="password" placeholder="Password" required>
 
@@ -74,4 +74,4 @@
     </div>
 
 </body>
-</html>
+</html><?php /**PATH C:\laragon\www\laravel\gudang-ATK\resources\views/login.blade.php ENDPATH**/ ?>
