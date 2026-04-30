@@ -7,28 +7,33 @@ use App\Models\Barang;
 
 class BarangController extends Controller
 {
-     public function index()
-    {
-        $barang = Barang::all();
-        return view('index', compact('barang'));
-    }
-
     public function store(Request $request)
     {
-        Barang::create($request->all());
-        return redirect()->back();
+        $request->validate([
+            'nama'        => 'required|string',
+            'stok'        => 'required|integer|min:0',
+            'kategori_id' => 'nullable|exists:kategoris,id',
+        ]);
+
+        Barang::create($request->only('nama', 'stok', 'kategori_id'));
+        return redirect()->route('index')->with('success', 'Barang berhasil ditambahkan.');
     }
 
     public function update(Request $request, $id)
     {
-        $barang = Barang::findOrFail($id);
-        $barang->update($request->all());
-        return redirect()->route('barang.index');
+        $request->validate([
+            'nama'        => 'required|string',
+            'stok'        => 'required|integer|min:0',
+            'kategori_id' => 'nullable|exists:kategoris,id',
+        ]);
+
+        Barang::findOrFail($id)->update($request->only('nama', 'stok', 'kategori_id'));
+        return redirect()->route('index')->with('success', 'Barang berhasil diupdate.');
     }
 
     public function destroy($id)
     {
         Barang::destroy($id);
-        return redirect()->back();
+        return redirect()->route('index')->with('success', 'Barang berhasil dihapus.');
     }
 }
