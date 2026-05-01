@@ -72,7 +72,8 @@ class AuthController extends Controller
 
         $riwayatMasuk = DB::table('barang_masuk')
             ->join('barangs', 'barang_masuk.barang_id', '=', 'barangs.id')
-            ->select('barangs.nama', 'barang_masuk.jumlah', 'barang_masuk.tanggal')
+            ->leftJoin('suppliers', 'barang_masuk.supplier_id', '=', 'suppliers.id')
+            ->select('barangs.nama', 'barang_masuk.jumlah', 'barang_masuk.tanggal', 'suppliers.nama as nama_supplier')
             ->orderByDesc('barang_masuk.tanggal')
             ->get();
 
@@ -112,7 +113,8 @@ class AuthController extends Controller
 
         $riwayatMasuk = DB::table('barang_masuk')
             ->join('barangs', 'barang_masuk.barang_id', '=', 'barangs.id')
-            ->select('barangs.nama', 'barang_masuk.jumlah', 'barang_masuk.tanggal')
+            ->leftJoin('suppliers', 'barang_masuk.supplier_id', '=', 'suppliers.id')
+            ->select('barangs.nama', 'barang_masuk.jumlah', 'barang_masuk.tanggal', 'suppliers.nama as nama_supplier')
             ->orderByDesc('barang_masuk.tanggal')->limit(10)->get();
 
         $riwayatKeluar = DB::table('barang_keluar')

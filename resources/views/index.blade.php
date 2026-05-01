@@ -86,7 +86,7 @@
 
     <!-- DASHBOARD -->
     <div id="dashboard">
-        <h1 style="margin-top:0;color:#2c3e50;">Dashboard ATK</h1>
+        <h1 style="margin-top:0;color:#2c3e50;">Dashboard Admin</h1>
         <div class="cards">
             <div class="card blue">
                 <h3>Total Jenis Barang</h3>
@@ -284,6 +284,12 @@
                             <option value="{{ $b->id }}">{{ $b->kode_barang }} - {{ $b->nama }} (Stok: {{ $b->stok }})</option>
                         @endforeach
                     </select>
+                    <select name="supplier_id">
+                        <option value="">-- Pilih Supplier (opsional) --</option>
+                        @foreach($supplier as $s)
+                            <option value="{{ $s->id }}">{{ $s->nama }}</option>
+                        @endforeach
+                    </select>
                     <input type="number" name="jumlah" placeholder="Jumlah Masuk" min="1" required>
                     <input type="date" name="tanggal" value="{{ date('Y-m-d') }}" required>
                     <button type="submit" class="btn btn-success"> Simpan </button>
@@ -294,17 +300,18 @@
             <h2>Riwayat Barang Masuk</h2>
             <table>
                 <tr>
-                    <th>No</th><th>Nama Barang</th><th>Jumlah</th><th>Tanggal</th>
+                    <th>No</th><th>Nama Barang</th><th>Supplier</th><th>Jumlah</th><th>Tanggal</th>
                 </tr>
                 @forelse($riwayatMasuk as $r)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $r->nama }}</td>
+                    <td>{{ $r->nama_supplier ?? '-' }}</td>
                     <td><span class="badge badge-in">+{{ $r->jumlah }}</span></td>
                     <td>{{ \Carbon\Carbon::parse($r->tanggal)->format('d/m/Y') }}</td>
                 </tr>
                 @empty
-                <tr><td colspan="4">Belum ada riwayat barang masuk</td></tr>
+                <tr><td colspan="5">Belum ada riwayat barang masuk</td></tr>
                 @endforelse
             </table>
         </div>
