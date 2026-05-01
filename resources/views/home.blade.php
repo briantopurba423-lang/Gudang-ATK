@@ -165,6 +165,16 @@
     </div>
 </section>
 
+<section>
+
+<h2>Tentang Aplikasi</h2>
+
+<p>
+Aplikasi Stok Gudang ATK membantu perusahaan
+mengelola persediaan alat tulis kantor secara digital
+agar lebih cepat, akurat, dan efisien.
+</p>
+
 <!-- FITUR -->
 <section id="fitur">
     <div class="section-title">
