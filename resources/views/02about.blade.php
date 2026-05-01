@@ -9,7 +9,7 @@
             <p style="color:#64748b;">
                 Sistem manajemen stok ATK modern, cepat, dan efisien
             </p>
-            
+
         </div>
 
         <!-- ABOUT CARD -->
@@ -81,8 +81,13 @@
             </div>
 
             <div style="text-align:center;">
-            <img src="foto3.jpg" style="width:500%; border-radius:12px; object-fit:cover;">
-            <p style="margin-top:8px; font-size:14px; color:#475569;">Dashboard Sistem</p>
+            <img src="foto3.jpg" style="width:50%; border-radius:12px; object-fit:cover;">
+            <p style="margin-top:8px; font-size:14px; color:#475569;">BUKU TULIS</p>
+            </div>
+
+            <div style="text-align:center;">
+            <img src="foto4.jpg" style="width:50%; border-radius:12px; object-fit:cover;">
+            <p style="margin-top:8px; font-size:14px; color:#475569;">SPIDOL</p>
             </div>
         </div>
         

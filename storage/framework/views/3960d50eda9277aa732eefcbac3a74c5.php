@@ -9,7 +9,7 @@
             <p style="color:#64748b;">
                 Sistem manajemen stok ATK modern, cepat, dan efisien
             </p>
-            
+
         </div>
 
         <!-- ABOUT CARD -->
@@ -30,9 +30,7 @@
             </p>
         </div>
 
-        <!-- GRID BOX -->
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
-
+    
             <!-- TENTANG -->
             <div style="
                 background:white;
@@ -62,5 +60,34 @@
                     <li>✔️ Pengelolaan cepat</li>
                     <li>✔️ Data rapi & aman</li>
                 </ul>
+                <!-- GALERI FOTO -->
+                <div style="margin-top:30px;">
+                <h3 style="margin-bottom:15px;">📸 Galeri</h3>
+
+                <div style="
+                display:grid;
+                grid-template-columns: repeat(3, 1fr);
+                 gap:15px;
+                ">
+
+                <div style="text-align:center;">
+                <img src="foto1.jpg" style="width:50%; border-radius:12px; object-fit:cover;">
+                <p style="margin-top:8px; font-size:14px; color:#475569;">HVS</p>
+                </div>
+
+                <div style="text-align:center;">
+                <img src="foto2.jpg" style="width: 50%; border-radius:12px; object-fit:cover;">
+                <p style="margin-top:8px; font-size:14px; color:#475569;">PENA</p>
             </div>
-</div><?php /**PATH C:\laragon\www\laravel\gudang-ATK\resources\views/02about.blade.php ENDPATH**/ ?>
+
+            <div style="text-align:center;">
+            <img src="foto3.jpg" style="width:50%; border-radius:12px; object-fit:cover;">
+            <p style="margin-top:8px; font-size:14px; color:#475569;">BUKU TULIS</p>
+            </div>
+
+            <div style="text-align:center;">
+            <img src="foto4.jpg" style="width:50%; border-radius:12px; object-fit:cover;">
+            <p style="margin-top:8px; font-size:14px; color:#475569;">SPIDOL</p>
+            </div>
+        </div>
+        <?php /**PATH C:\laragon\www\laravel\gudang-ATK\resources\views/02about.blade.php ENDPATH**/ ?>
