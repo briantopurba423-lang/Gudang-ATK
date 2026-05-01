@@ -9,6 +9,7 @@
             <p style="color:#64748b;">
                 Sistem manajemen stok ATK modern, cepat, dan efisien
             </p>
+            
         </div>
 
         <!-- ABOUT CARD -->
