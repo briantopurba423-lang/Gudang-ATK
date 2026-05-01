@@ -9,7 +9,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\ExportController;
 
 Route::get('/about', function () {
-    return view('02about');
+    return view('pages.about');
 })->name('about');
 
 // Landing Page
