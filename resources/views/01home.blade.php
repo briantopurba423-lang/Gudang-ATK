@@ -122,7 +122,7 @@
             background: #0f172a; color: #94a3b8; padding: 40px 20px; text-align: center;
         }
         footer .footer-logo { font-size: 22px; font-weight: bold; color: white; margin-bottom: 12px; }
-        footer p { font-size: 13px; margin: 4px 0; }
+        footer p { font-size: 17px; margin: 4px 0; }
         footer .footer-links { margin: 16px 0; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
         footer .footer-links a { color: #94a3b8; text-decoration: none; font-size: 13px; }
         footer .footer-links a:hover { color: white; }
@@ -167,13 +167,6 @@
 
 <section>
 
-<h2>Tentang Aplikasi</h2>
-
-<p>
-Aplikasi Stok Gudang ATK membantu perusahaan
-mengelola persediaan alat tulis kantor secara digital
-agar lebih cepat, akurat, dan efisien.
-</p>
 
 <!-- FITUR -->
 <section id="fitur">
@@ -244,12 +237,8 @@ agar lebih cepat, akurat, dan efisien.
 <!-- FOOTER -->
 <footer>
     <div class="footer-logo">📦 ATK Stock System</div>
-    <div class="footer-links">
-        <a href="#fitur">Fitur</a>
-        <a href="{{ route('login.form') }}">Login</a>
-    </div>
     <p>© 2026 ATK Stock System. All rights reserved.</p>
-    <p style="margin-top:8px;">Email: support@atkstock.com | Telp: 0812-xxxx-xxxx</p>
+    <p style="margin-top:10px;">Email: stokgudangatk@gmail.com | Telp: 0812-6481-0914</p>
 </footer>
 
 </body>

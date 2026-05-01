@@ -19,12 +19,12 @@ class AuthController extends Controller
         $barangMasuk   = DB::table('barang_masuk')->sum('jumlah');
         $barangKeluar  = DB::table('barang_keluar')->sum('jumlah');
 
-        return view('home', compact('totalBarang', 'totalSupplier', 'barangMasuk', 'barangKeluar'));
+        return view('01home', compact('totalBarang', 'totalSupplier', 'barangMasuk', 'barangKeluar'));
     }
 
     public function showLogin()
     {
-        return view('login');
+        return view('03login');
     }
 
     public function login(Request $request)
@@ -83,7 +83,7 @@ class AuthController extends Controller
             ->orderByDesc('barang_keluar.tanggal')
             ->get();
 
-        return view('index', compact(
+        return view('04index', compact(
             'totalBarang',
             'totalSupplier',
             'barang',
@@ -133,7 +133,7 @@ class AuthController extends Controller
             $chartKeluar[] = DB::table('barang_keluar')->whereDate('tanggal', $date)->sum('jumlah');
         }
 
-        return view('dashboard-manager', compact(
+        return view('05dashboard-manager', compact(
             'totalBarang', 'totalSupplier', 'stokMenipis', 'stokHabis',
             'totalMasuk', 'totalKeluar', 'lowStock',
             'riwayatMasuk', 'riwayatKeluar',
