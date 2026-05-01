@@ -86,7 +86,7 @@
 
     <!-- DASHBOARD -->
     <div id="dashboard">
-        <h1 style="margin-top:0;color:#2c3e50;">Dashboard ATK</h1>
+        <h1 style="margin-top:0;color:#2c3e50;">Dashboard Admin</h1>
         <div class="cards">
             <div class="card blue">
                 <h3>Total Jenis Barang</h3>
@@ -284,6 +284,12 @@
                             <option value="<?php echo e($b->id); ?>"><?php echo e($b->kode_barang); ?> - <?php echo e($b->nama); ?> (Stok: <?php echo e($b->stok); ?>)</option>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </select>
+                    <select name="supplier_id">
+                        <option value="">-- Pilih Supplier (opsional) --</option>
+                        <?php $__currentLoopData = $supplier; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $s): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($s->id); ?>"><?php echo e($s->nama); ?></option>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </select>
                     <input type="number" name="jumlah" placeholder="Jumlah Masuk" min="1" required>
                     <input type="date" name="tanggal" value="<?php echo e(date('Y-m-d')); ?>" required>
                     <button type="submit" class="btn btn-success"> Simpan </button>
@@ -294,17 +300,18 @@
             <h2>Riwayat Barang Masuk</h2>
             <table>
                 <tr>
-                    <th>No</th><th>Nama Barang</th><th>Jumlah</th><th>Tanggal</th>
+                    <th>No</th><th>Nama Barang</th><th>Supplier</th><th>Jumlah</th><th>Tanggal</th>
                 </tr>
                 <?php $__empty_1 = true; $__currentLoopData = $riwayatMasuk; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $r): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                 <tr>
                     <td><?php echo e($loop->iteration); ?></td>
                     <td><?php echo e($r->nama); ?></td>
+                    <td><?php echo e($r->nama_supplier ?? '-'); ?></td>
                     <td><span class="badge badge-in">+<?php echo e($r->jumlah); ?></span></td>
                     <td><?php echo e(\Carbon\Carbon::parse($r->tanggal)->format('d/m/Y')); ?></td>
                 </tr>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-                <tr><td colspan="4">Belum ada riwayat barang masuk</td></tr>
+                <tr><td colspan="5">Belum ada riwayat barang masuk</td></tr>
                 <?php endif; ?>
             </table>
         </div>

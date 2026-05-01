@@ -16,7 +16,8 @@ class BarangMasukSheet implements FromCollection, WithHeadings, WithTitle, WithS
     {
         return DB::table('barang_masuk')
             ->join('barangs', 'barang_masuk.barang_id', '=', 'barangs.id')
-            ->select('barangs.kode_barang', 'barangs.nama', 'barang_masuk.jumlah', 'barang_masuk.tanggal')
+            ->leftJoin('suppliers', 'barang_masuk.supplier_id', '=', 'suppliers.id')
+            ->select('barangs.kode_barang', 'barangs.nama', 'suppliers.nama as nama_supplier', 'barang_masuk.jumlah', 'barang_masuk.tanggal')
             ->orderByDesc('barang_masuk.tanggal')
             ->get()
             ->map(function ($r, $i) {
@@ -24,6 +25,7 @@ class BarangMasukSheet implements FromCollection, WithHeadings, WithTitle, WithS
                     'No'          => $i + 1,
                     'Kode Barang' => $r->kode_barang,
                     'Nama Barang' => $r->nama,
+                    'Supplier'    => $r->nama_supplier ?? '-',
                     'Jumlah'      => $r->jumlah,
                     'Tanggal'     => $r->tanggal,
                 ];
@@ -32,7 +34,7 @@ class BarangMasukSheet implements FromCollection, WithHeadings, WithTitle, WithS
 
     public function headings(): array
     {
-        return ['No', 'Kode Barang', 'Nama Barang', 'Jumlah', 'Tanggal'];
+        return ['No', 'Kode Barang', 'Nama Barang', 'Supplier', 'Jumlah', 'Tanggal'];
     }
 
     public function title(): string { return 'Barang Masuk'; }
@@ -46,6 +48,6 @@ class BarangMasukSheet implements FromCollection, WithHeadings, WithTitle, WithS
 
     public function columnWidths(): array
     {
-        return ['A' => 5, 'B' => 14, 'C' => 25, 'D' => 10, 'E' => 14];
+        return ['A' => 5, 'B' => 14, 'C' => 25, 'D' => 22, 'E' => 10, 'F' => 14];
     }
 }

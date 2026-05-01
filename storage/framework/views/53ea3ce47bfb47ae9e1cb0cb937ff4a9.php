@@ -78,13 +78,13 @@
 <div class="sidebar">
     <div class="sidebar-header">
         📊 ATK MANAGER
-        <small>{{ Session::get('username') }} · Manager</small>
+        <small><?php echo e(Session::get('username')); ?> · Manager</small>
     </div>
     <a href="#" class="active" onclick="return false;">📊 Overview</a>
-    <a href="{{ route('index') }}">🏠 Ke Dashboard Admin</a>
+    <a href="<?php echo e(route('index')); ?>">🏠 Ke Dashboard Admin</a>
     <div class="logout-wrap">
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
+        <form method="POST" action="<?php echo e(route('logout')); ?>">
+            <?php echo csrf_field(); ?>
             <button type="submit">🚪 Logout</button>
         </form>
     </div>
@@ -92,16 +92,16 @@
 
 <div class="content">
 
-    @if(session('error'))
-        <div class="alert alert-error">{{ session('error') }}</div>
-    @endif
+    <?php if(session('error')): ?>
+        <div class="alert alert-error"><?php echo e(session('error')); ?></div>
+    <?php endif; ?>
 
     <div class="page-header">
         <div>
-            <h1>Selamat Datang, {{ Session::get('username') }}!</h1>
+            <h1>Selamat Datang, <?php echo e(Session::get('username')); ?>!</h1>
             <p>Ringkasan aktivitas inventaris gudang ATK.</p>
         </div>
-        <a href="{{ route('export.excel') }}" class="btn-export">
+        <a href="<?php echo e(route('export.excel')); ?>" class="btn-export">
             📥 Export Excel
         </a>
     </div>
@@ -110,27 +110,27 @@
     <div class="stats-grid">
         <div class="stat-card">
             <h3>Total Jenis Barang</h3>
-            <div class="num">{{ $totalBarang }}</div>
+            <div class="num"><?php echo e($totalBarang); ?></div>
         </div>
         <div class="stat-card warning">
             <h3>Stok Hampir Habis</h3>
-            <div class="num">{{ $stokMenipis }}</div>
+            <div class="num"><?php echo e($stokMenipis); ?></div>
         </div>
         <div class="stat-card warning" style="border-top-color:#e67e22">
             <h3>Stok Habis</h3>
-            <div class="num">{{ $stokHabis }}</div>
+            <div class="num"><?php echo e($stokHabis); ?></div>
         </div>
         <div class="stat-card success">
             <h3>Total Masuk</h3>
-            <div class="num">{{ $totalMasuk }}</div>
+            <div class="num"><?php echo e($totalMasuk); ?></div>
         </div>
         <div class="stat-card" style="border-top-color:#e74c3c">
             <h3>Total Keluar</h3>
-            <div class="num">{{ $totalKeluar }}</div>
+            <div class="num"><?php echo e($totalKeluar); ?></div>
         </div>
         <div class="stat-card purple">
             <h3>Supplier</h3>
-            <div class="num">{{ $totalSupplier }}</div>
+            <div class="num"><?php echo e($totalSupplier); ?></div>
         </div>
     </div>
 
@@ -150,20 +150,20 @@
                     <tr><th>Barang</th><th>Sisa Stok</th></tr>
                 </thead>
                 <tbody>
-                    @forelse($lowStock as $item)
+                    <?php $__empty_1 = true; $__currentLoopData = $lowStock; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                     <tr>
-                        <td>{{ $item->nama }}</td>
+                        <td><?php echo e($item->nama); ?></td>
                         <td>
-                            @if($item->stok == 0)
+                            <?php if($item->stok == 0): ?>
                                 <span class="badge badge-danger">Habis</span>
-                            @else
-                                <span class="badge badge-warning">{{ $item->stok }} unit</span>
-                            @endif
+                            <?php else: ?>
+                                <span class="badge badge-warning"><?php echo e($item->stok); ?> unit</span>
+                            <?php endif; ?>
                         </td>
                     </tr>
-                    @empty
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                     <tr><td colspan="2" style="text-align:center;color:#999;padding:20px;">✅ Semua stok aman</td></tr>
-                    @endforelse
+                    <?php endif; ?>
                 </tbody>
             </table>
         </div>
@@ -179,16 +179,16 @@
                     <tr><th>Barang</th><th>Supplier</th><th>Jumlah</th><th>Tanggal</th></tr>
                 </thead>
                 <tbody>
-                    @forelse($riwayatMasuk as $r)
+                    <?php $__empty_1 = true; $__currentLoopData = $riwayatMasuk; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $r): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                     <tr>
-                        <td>{{ $r->nama }}</td>
-                        <td>{{ $r->nama_supplier ?? '-' }}</td>
-                        <td><span class="badge badge-in">+{{ $r->jumlah }}</span></td>
-                        <td>{{ \Carbon\Carbon::parse($r->tanggal)->format('d/m/Y') }}</td>
+                        <td><?php echo e($r->nama); ?></td>
+                        <td><?php echo e($r->nama_supplier ?? '-'); ?></td>
+                        <td><span class="badge badge-in">+<?php echo e($r->jumlah); ?></span></td>
+                        <td><?php echo e(\Carbon\Carbon::parse($r->tanggal)->format('d/m/Y')); ?></td>
                     </tr>
-                    @empty
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                     <tr><td colspan="4" style="text-align:center;color:#999;">Belum ada data</td></tr>
-                    @endforelse
+                    <?php endif; ?>
                 </tbody>
             </table>
         </div>
@@ -201,15 +201,15 @@
                     <tr><th>Barang</th><th>Jumlah</th><th>Tanggal</th></tr>
                 </thead>
                 <tbody>
-                    @forelse($riwayatKeluar as $r)
+                    <?php $__empty_1 = true; $__currentLoopData = $riwayatKeluar; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $r): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                     <tr>
-                        <td>{{ $r->nama }}</td>
-                        <td><span class="badge badge-out">-{{ $r->jumlah }}</span></td>
-                        <td>{{ \Carbon\Carbon::parse($r->tanggal)->format('d/m/Y') }}</td>
+                        <td><?php echo e($r->nama); ?></td>
+                        <td><span class="badge badge-out">-<?php echo e($r->jumlah); ?></span></td>
+                        <td><?php echo e(\Carbon\Carbon::parse($r->tanggal)->format('d/m/Y')); ?></td>
                     </tr>
-                    @empty
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                     <tr><td colspan="3" style="text-align:center;color:#999;">Belum ada data</td></tr>
-                    @endforelse
+                    <?php endif; ?>
                 </tbody>
             </table>
         </div>
@@ -218,9 +218,9 @@
 </div>
 
 <script>
-const labels = {!! json_encode($chartLabels) !!};
-const dataMasuk = {!! json_encode($chartMasuk) !!};
-const dataKeluar = {!! json_encode($chartKeluar) !!};
+const labels = <?php echo json_encode($chartLabels); ?>;
+const dataMasuk = <?php echo json_encode($chartMasuk); ?>;
+const dataKeluar = <?php echo json_encode($chartKeluar); ?>;
 
 new Chart(document.getElementById('stockChart').getContext('2d'), {
     type: 'line',
@@ -249,3 +249,4 @@ new Chart(document.getElementById('stockChart').getContext('2d'), {
 
 </body>
 </html>
+<?php /**PATH C:\laragon\www\laravel\gudang-ATK\resources\views/dashboard-manager.blade.php ENDPATH**/ ?>
