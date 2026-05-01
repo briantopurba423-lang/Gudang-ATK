@@ -133,7 +133,7 @@
 <!-- NAVBAR -->
 <nav>
     <div class="logo">📦 ATK <span>Stock</span></div>
-    <a href="{{ route('login.form') }}" class="nav-btn">Masuk ke Sistem →</a>
+    <a href="<?php echo e(route('login.form')); ?>" class="nav-btn">Masuk ke Sistem →</a>
 </nav>
 
 <!-- HERO -->
@@ -142,24 +142,24 @@
     <h1>Kelola Stok ATK<br><span>Lebih Mudah & Efisien</span></h1>
     <p>Pantau barang masuk, keluar, dan stok gudang secara real-time. Solusi digital untuk manajemen alat tulis kantor yang akurat.</p>
     <div class="hero-btns">
-        <a href="{{ route('login.form') }}" class="btn-white">🚀 Mulai Sekarang</a>
+        <a href="<?php echo e(route('login.form')); ?>" class="btn-white">🚀 Mulai Sekarang</a>
         <a href="#fitur" class="btn-outline">Lihat Fitur</a>
     </div>
     <div class="stats">
         <div class="stat-card">
-            <div class="num">{{ $totalBarang }}</div>
+            <div class="num"><?php echo e($totalBarang); ?></div>
             <p>Jenis Barang</p>
         </div>
         <div class="stat-card">
-            <div class="num">{{ $totalSupplier }}</div>
+            <div class="num"><?php echo e($totalSupplier); ?></div>
             <p>Supplier</p>
         </div>
         <div class="stat-card">
-            <div class="num">{{ $barangMasuk }}</div>
+            <div class="num"><?php echo e($barangMasuk); ?></div>
             <p>Total Masuk</p>
         </div>
         <div class="stat-card">
-            <div class="num">{{ $barangKeluar }}</div>
+            <div class="num"><?php echo e($barangKeluar); ?></div>
             <p>Total Keluar</p>
         </div>
     </div>
@@ -237,7 +237,7 @@
 <section class="cta">
     <h2>Siap Mulai Mengelola Stok?</h2>
     <p>Masuk ke sistem dan kelola gudang ATK kamu sekarang juga.</p>
-    <a href="{{ route('login.form') }}" class="btn-white">Masuk ke Sistem →</a>
+    <a href="<?php echo e(route('login.form')); ?>" class="btn-white">Masuk ke Sistem →</a>
 </section>
 
 <!-- FOOTER -->
@@ -245,7 +245,7 @@
     <div class="footer-logo">📦 ATK Stock System</div>
     <div class="footer-links">
         <a href="#fitur">Fitur</a>
-        <a href="{{ route('login.form') }}">Login</a>
+        <a href="<?php echo e(route('login.form')); ?>">Login</a>
     </div>
     <p>© 2026 ATK Stock System. All rights reserved.</p>
     <p style="margin-top:8px;">Email: support@atkstock.com | Telp: 0812-xxxx-xxxx</p>
@@ -253,3 +253,4 @@
 
 </body>
 </html>
+<?php /**PATH C:\laragon\www\laravel-1\Gudang-ATK\resources\views/home.blade.php ENDPATH**/ ?>
