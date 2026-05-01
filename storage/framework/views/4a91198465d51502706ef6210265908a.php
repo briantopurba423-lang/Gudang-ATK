@@ -133,7 +133,7 @@
 <!-- NAVBAR -->
 <nav>
     <div class="logo">📦 ATK <span>Stock</span></div>
-    <a href="<?php echo e(route('login.form')); ?>" class="nav-btn">Masuk ke Sistem →</a>
+    <a href="<?php echo e(route('about')); ?>" class="nav-btn">Tentang</a>
 </nav>
 
 <!-- HERO -->
@@ -233,12 +233,6 @@
     </div>
 </section>
 
-<!-- CTA -->
-<section class="cta">
-    <h2>Siap Mulai Mengelola Stok?</h2>
-    <p>Masuk ke sistem dan kelola gudang ATK kamu sekarang juga.</p>
-    <a href="<?php echo e(route('login.form')); ?>" class="btn-white">Masuk ke Sistem →</a>
-</section>
 
 <!-- FOOTER -->
 <footer>

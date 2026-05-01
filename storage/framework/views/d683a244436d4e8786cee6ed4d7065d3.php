@@ -9,7 +9,6 @@
             <p style="color:#64748b;">
                 Sistem manajemen stok ATK modern, cepat, dan efisien
             </p>
-            
         </div>
 
         <!-- ABOUT CARD -->
@@ -85,4 +84,4 @@
             <p style="margin-top:8px; font-size:14px; color:#475569;">Dashboard Sistem</p>
             </div>
         </div>
-        
+        <?php /**PATH C:\laragon\www\laravel-1\Gudang-ATK\resources\views/about.blade.php ENDPATH**/ ?>
