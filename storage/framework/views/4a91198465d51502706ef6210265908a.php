@@ -133,7 +133,11 @@
 <!-- NAVBAR -->
 <nav>
     <div class="logo">📦 ATK <span>Stock</span></div>
+<<<<<<< HEAD
     <a href="<?php echo e(route('login.form')); ?>" class="nav-btn">Masuk ke Sistem →</a>
+=======
+    <a href="<?php echo e(route('about')); ?>" class="nav-btn">Tentang</a>
+>>>>>>> e1c3a3dbbc14d500e2deb3de4d7b9572f865eba4
 </nav>
 
 <!-- HERO -->
@@ -167,6 +171,7 @@
 
 <section>
 
+<<<<<<< HEAD
 <h2>Tentang Aplikasi</h2>
 
 <p>
@@ -174,6 +179,8 @@ Aplikasi Stok Gudang ATK membantu perusahaan
 mengelola persediaan alat tulis kantor secara digital
 agar lebih cepat, akurat, dan efisien.
 </p>
+=======
+>>>>>>> e1c3a3dbbc14d500e2deb3de4d7b9572f865eba4
 
 <!-- FITUR -->
 <section id="fitur">
@@ -240,12 +247,15 @@ agar lebih cepat, akurat, dan efisien.
     </div>
 </section>
 
+<<<<<<< HEAD
 <!-- CTA -->
 <section class="cta">
     <h2>Siap Mulai Mengelola Stok?</h2>
     <p>Masuk ke sistem dan kelola gudang ATK kamu sekarang juga.</p>
     <a href="<?php echo e(route('login.form')); ?>" class="btn-white">Masuk ke Sistem →</a>
 </section>
+=======
+>>>>>>> e1c3a3dbbc14d500e2deb3de4d7b9572f865eba4
 
 <!-- FOOTER -->
 <footer>

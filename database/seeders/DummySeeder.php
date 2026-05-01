@@ -53,16 +53,16 @@ class DummySeeder extends Seeder
             ]));
         }
 
-        // Barang Masuk
+        // Barang Masuk (supplier_id: 1=PT Sinar Jaya, 2=CV Maju Bersama, 3=Toko Berkah, 4=UD Sejahtera)
         $masukData = [
-            ['barang_id' => 1, 'jumlah' => 100, 'tanggal' => Carbon::now()->subDays(6)->toDateString()],
-            ['barang_id' => 2, 'jumlah' => 50,  'tanggal' => Carbon::now()->subDays(5)->toDateString()],
-            ['barang_id' => 3, 'jumlah' => 30,  'tanggal' => Carbon::now()->subDays(5)->toDateString()],
-            ['barang_id' => 4, 'jumlah' => 20,  'tanggal' => Carbon::now()->subDays(4)->toDateString()],
-            ['barang_id' => 5, 'jumlah' => 40,  'tanggal' => Carbon::now()->subDays(3)->toDateString()],
-            ['barang_id' => 8, 'jumlah' => 150, 'tanggal' => Carbon::now()->subDays(2)->toDateString()],
-            ['barang_id' => 1, 'jumlah' => 50,  'tanggal' => Carbon::now()->subDays(1)->toDateString()],
-            ['barang_id' => 6, 'jumlah' => 10,  'tanggal' => Carbon::now()->toDateString()],
+            ['barang_id' => 1, 'supplier_id' => 1, 'jumlah' => 100, 'tanggal' => Carbon::now()->subDays(6)->toDateString()],
+            ['barang_id' => 2, 'supplier_id' => 2, 'jumlah' => 50,  'tanggal' => Carbon::now()->subDays(5)->toDateString()],
+            ['barang_id' => 3, 'supplier_id' => 3, 'jumlah' => 30,  'tanggal' => Carbon::now()->subDays(5)->toDateString()],
+            ['barang_id' => 4, 'supplier_id' => 4, 'jumlah' => 20,  'tanggal' => Carbon::now()->subDays(4)->toDateString()],
+            ['barang_id' => 5, 'supplier_id' => 1, 'jumlah' => 40,  'tanggal' => Carbon::now()->subDays(3)->toDateString()],
+            ['barang_id' => 8, 'supplier_id' => 2, 'jumlah' => 150, 'tanggal' => Carbon::now()->subDays(2)->toDateString()],
+            ['barang_id' => 1, 'supplier_id' => 3, 'jumlah' => 50,  'tanggal' => Carbon::now()->subDays(1)->toDateString()],
+            ['barang_id' => 6, 'supplier_id' => 4, 'jumlah' => 10,  'tanggal' => Carbon::now()->toDateString()],
         ];
         foreach ($masukData as $m) {
             DB::table('barang_masuk')->insert(array_merge($m, [

@@ -74,4 +74,4 @@
     </div>
 
 </body>
-</html><?php /**PATH C:\laragon\www\laravel\gudang-ATK\resources\views/login.blade.php ENDPATH**/ ?>
+</html><?php /**PATH C:\laragon\www\laravel\gudang-ATK\resources\views/03login.blade.php ENDPATH**/ ?>

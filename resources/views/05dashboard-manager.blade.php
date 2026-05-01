@@ -176,17 +176,18 @@
             <div class="sub">10 transaksi terakhir</div>
             <table>
                 <thead>
-                    <tr><th>Barang</th><th>Jumlah</th><th>Tanggal</th></tr>
+                    <tr><th>Barang</th><th>Supplier</th><th>Jumlah</th><th>Tanggal</th></tr>
                 </thead>
                 <tbody>
                     @forelse($riwayatMasuk as $r)
                     <tr>
                         <td>{{ $r->nama }}</td>
+                        <td>{{ $r->nama_supplier ?? '-' }}</td>
                         <td><span class="badge badge-in">+{{ $r->jumlah }}</span></td>
                         <td>{{ \Carbon\Carbon::parse($r->tanggal)->format('d/m/Y') }}</td>
                     </tr>
                     @empty
-                    <tr><td colspan="3" style="text-align:center;color:#999;">Belum ada data</td></tr>
+                    <tr><td colspan="4" style="text-align:center;color:#999;">Belum ada data</td></tr>
                     @endforelse
                 </tbody>
             </table>

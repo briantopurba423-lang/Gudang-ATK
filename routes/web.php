@@ -8,6 +8,10 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\ExportController;
 
+Route::get('/about', function () {
+    return view('02about');
+})->name('about');
+
 // Landing Page
 Route::get('/', [AuthController::class, 'home'])->name('home');
 Route::get('/home', [AuthController::class, 'home']);

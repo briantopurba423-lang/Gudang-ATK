@@ -68,8 +68,8 @@
     <a onclick="showPage('masuk')" id="nav-masuk">📥 Barang Masuk</a>
     <a onclick="showPage('keluar')" id="nav-keluar">📤 Barang Keluar</a>
     <div class="logout-wrap">
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
+        <form method="POST" action="<?php echo e(route('logout')); ?>">
+            <?php echo csrf_field(); ?>
             <button type="submit">🚪 Logout</button>
         </form>
     </div>
@@ -77,36 +77,36 @@
 
 <div class="main">
 
-    @if(session('error'))
-        <div class="alert alert-error">{{ session('error') }}</div>
-    @endif
-    @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-    @endif
+    <?php if(session('error')): ?>
+        <div class="alert alert-error"><?php echo e(session('error')); ?></div>
+    <?php endif; ?>
+    <?php if(session('success')): ?>
+        <div class="alert alert-success"><?php echo e(session('success')); ?></div>
+    <?php endif; ?>
 
     <!-- DASHBOARD -->
     <div id="dashboard">
-        <h1 style="margin-top:0;color:#2c3e50;">Dashboard ATK</h1>
+        <h1 style="margin-top:0;color:#2c3e50;">Dashboard Admin</h1>
         <div class="cards">
             <div class="card blue">
                 <h3>Total Jenis Barang</h3>
-                <p class="num">{{ $totalBarang }}</p>
+                <p class="num"><?php echo e($totalBarang); ?></p>
             </div>
             <div class="card purple">
                 <h3>Total Kategori</h3>
-                <p class="num">{{ $kategori->count() }}</p>
+                <p class="num"><?php echo e($kategori->count()); ?></p>
             </div>
             <div class="card">
                 <h3>Total Supplier</h3>
-                <p class="num">{{ $totalSupplier }}</p>
+                <p class="num"><?php echo e($totalSupplier); ?></p>
             </div>
             <div class="card green">
                 <h3>Total Barang Masuk</h3>
-                <p class="num">{{ $barangMasuk }}</p>
+                <p class="num"><?php echo e($barangMasuk); ?></p>
             </div>
             <div class="card red">
                 <h3>Total Barang Keluar</h3>
-                <p class="num">{{ $barangKeluar }}</p>
+                <p class="num"><?php echo e($barangKeluar); ?></p>
             </div>
         </div>
 
@@ -116,32 +116,32 @@
                 <tr>
                     <th>No</th><th>Kode</th><th>Nama Barang</th><th>Kategori</th><th>Stok</th><th>Status</th>
                 </tr>
-                @forelse($barang as $b)
+                <?php $__empty_1 = true; $__currentLoopData = $barang; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $b): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                 <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td><span class="badge badge-kode">{{ $b->kode_barang }}</span></td>
-                    <td>{{ $b->nama }}</td>
+                    <td><?php echo e($loop->iteration); ?></td>
+                    <td><span class="badge badge-kode"><?php echo e($b->kode_barang); ?></span></td>
+                    <td><?php echo e($b->nama); ?></td>
                     <td>
-                        @if($b->kategori)
-                            <span class="badge badge-kat">{{ $b->kategori->nama }}</span>
-                        @else
+                        <?php if($b->kategori): ?>
+                            <span class="badge badge-kat"><?php echo e($b->kategori->nama); ?></span>
+                        <?php else: ?>
                             <span style="color:#aaa">-</span>
-                        @endif
+                        <?php endif; ?>
                     </td>
-                    <td>{{ $b->stok }}</td>
+                    <td><?php echo e($b->stok); ?></td>
                     <td>
-                        @if($b->stok <= 0)
+                        <?php if($b->stok <= 0): ?>
                             <span class="badge badge-out">Habis</span>
-                        @elseif($b->stok <= 5)
+                        <?php elseif($b->stok <= 5): ?>
                             <span class="badge" style="background:#fff3cd;color:#856404;">Menipis</span>
-                        @else
+                        <?php else: ?>
                             <span class="badge badge-in">Tersedia</span>
-                        @endif
+                        <?php endif; ?>
                     </td>
                 </tr>
-                @empty
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                 <tr><td colspan="6">Belum ada data barang</td></tr>
-                @endforelse
+                <?php endif; ?>
             </table>
         </div>
     </div>
@@ -150,8 +150,8 @@
     <div id="kategori" class="hidden">
         <div class="section-box">
             <h2>🏷️ Kategori Barang</h2>
-            <form method="POST" action="{{ route('kategori.store') }}">
-                @csrf
+            <form method="POST" action="<?php echo e(route('kategori.store')); ?>">
+                <?php echo csrf_field(); ?>
                 <div class="form-row">
                     <input type="text" name="nama" placeholder="Nama Kategori" required>
                     <input type="text" name="deskripsi" placeholder="Deskripsi (opsional)">
@@ -162,23 +162,23 @@
                 <tr>
                     <th>No</th><th>Nama Kategori</th><th>Deskripsi</th><th>Jumlah Barang</th><th>Aksi</th>
                 </tr>
-                @forelse($kategori as $k)
+                <?php $__empty_1 = true; $__currentLoopData = $kategori; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                 <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td><span class="badge badge-kat">{{ $k->nama }}</span></td>
-                    <td>{{ $k->deskripsi ?? '-' }}</td>
-                    <td>{{ $k->barangs_count }}</td>
+                    <td><?php echo e($loop->iteration); ?></td>
+                    <td><span class="badge badge-kat"><?php echo e($k->nama); ?></span></td>
+                    <td><?php echo e($k->deskripsi ?? '-'); ?></td>
+                    <td><?php echo e($k->barangs_count); ?></td>
                     <td>
-                        <form action="{{ route('kategori.destroy', $k->id) }}" method="POST" style="display:inline" onsubmit="return confirm('Hapus kategori ini?')">
-                            @csrf
-                            @method('DELETE')
+                        <form action="<?php echo e(route('kategori.destroy', $k->id)); ?>" method="POST" style="display:inline" onsubmit="return confirm('Hapus kategori ini?')">
+                            <?php echo csrf_field(); ?>
+                            <?php echo method_field('DELETE'); ?>
                             <button class="btn btn-danger" style="padding:5px 12px;font-size:12px;">Hapus</button>
                         </form>
                     </td>
                 </tr>
-                @empty
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                 <tr><td colspan="5">Belum ada kategori</td></tr>
-                @endforelse
+                <?php endif; ?>
             </table>
         </div>
     </div>
@@ -187,16 +187,16 @@
     <div id="barang" class="hidden">
         <div class="section-box">
             <h2>📋 Data Barang</h2>
-            <form method="POST" action="{{ route('barang.store') }}">
-                @csrf
+            <form method="POST" action="<?php echo e(route('barang.store')); ?>">
+                <?php echo csrf_field(); ?>
                 <div class="form-row">
                     <input type="text" name="nama" placeholder="Nama Barang" required>
                     <input type="number" name="stok" placeholder="Stok Awal" min="0" required>
                     <select name="kategori_id">
                         <option value="">-- Pilih Kategori --</option>
-                        @foreach($kategori as $k)
-                            <option value="{{ $k->id }}">{{ $k->nama }}</option>
-                        @endforeach
+                        <?php $__currentLoopData = $kategori; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($k->id); ?>"><?php echo e($k->nama); ?></option>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </select>
                     <button type="submit" class="btn btn-primary">+ Tambah</button>
                 </div>
@@ -205,30 +205,30 @@
                 <tr>
                     <th>No</th><th>Kode Barang</th><th>Nama Barang</th><th>Kategori</th><th>Stok</th><th>Aksi</th>
                 </tr>
-                @forelse($barang as $b)
+                <?php $__empty_1 = true; $__currentLoopData = $barang; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $b): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                 <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td><span class="badge badge-kode">{{ $b->kode_barang }}</span></td>
-                    <td>{{ $b->nama }}</td>
+                    <td><?php echo e($loop->iteration); ?></td>
+                    <td><span class="badge badge-kode"><?php echo e($b->kode_barang); ?></span></td>
+                    <td><?php echo e($b->nama); ?></td>
                     <td>
-                        @if($b->kategori)
-                            <span class="badge badge-kat">{{ $b->kategori->nama }}</span>
-                        @else
+                        <?php if($b->kategori): ?>
+                            <span class="badge badge-kat"><?php echo e($b->kategori->nama); ?></span>
+                        <?php else: ?>
                             <span style="color:#aaa">-</span>
-                        @endif
+                        <?php endif; ?>
                     </td>
-                    <td>{{ $b->stok }}</td>
+                    <td><?php echo e($b->stok); ?></td>
                     <td>
-                        <form action="{{ route('barang.destroy', $b->id) }}" method="POST" style="display:inline" onsubmit="return confirm('Hapus barang ini?')">
-                            @csrf
-                            @method('DELETE')
+                        <form action="<?php echo e(route('barang.destroy', $b->id)); ?>" method="POST" style="display:inline" onsubmit="return confirm('Hapus barang ini?')">
+                            <?php echo csrf_field(); ?>
+                            <?php echo method_field('DELETE'); ?>
                             <button class="btn btn-danger" style="padding:5px 12px;font-size:12px;">Hapus</button>
                         </form>
                     </td>
                 </tr>
-                @empty
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                 <tr><td colspan="6">Belum ada data barang</td></tr>
-                @endforelse
+                <?php endif; ?>
             </table>
         </div>
     </div>
@@ -237,8 +237,8 @@
     <div id="supplier" class="hidden">
         <div class="section-box">
             <h2>🏭 Data Supplier</h2>
-            <form method="POST" action="{{ route('supplier.store') }}">
-                @csrf
+            <form method="POST" action="<?php echo e(route('supplier.store')); ?>">
+                <?php echo csrf_field(); ?>
                 <div class="form-row">
                     <input type="text" name="nama" placeholder="Nama Supplier" required>
                     <input type="text" name="kontak" placeholder="Kontak / No. HP" required>
@@ -250,23 +250,23 @@
                 <tr>
                     <th>No</th><th>Nama Supplier</th><th>Kontak</th><th>Alamat</th><th>Aksi</th>
                 </tr>
-                @forelse($supplier as $s)
+                <?php $__empty_1 = true; $__currentLoopData = $supplier; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $s): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                 <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $s->nama }}</td>
-                    <td>{{ $s->kontak }}</td>
-                    <td style="text-align:left;">{{ $s->alamat ?? '-' }}</td>
+                    <td><?php echo e($loop->iteration); ?></td>
+                    <td><?php echo e($s->nama); ?></td>
+                    <td><?php echo e($s->kontak); ?></td>
+                    <td style="text-align:left;"><?php echo e($s->alamat ?? '-'); ?></td>
                     <td>
-                        <form action="{{ route('supplier.destroy', $s->id) }}" method="POST" style="display:inline" onsubmit="return confirm('Hapus supplier ini?')">
-                            @csrf
-                            @method('DELETE')
+                        <form action="<?php echo e(route('supplier.destroy', $s->id)); ?>" method="POST" style="display:inline" onsubmit="return confirm('Hapus supplier ini?')">
+                            <?php echo csrf_field(); ?>
+                            <?php echo method_field('DELETE'); ?>
                             <button class="btn btn-danger" style="padding:5px 12px;font-size:12px;">Hapus</button>
                         </form>
                     </td>
                 </tr>
-                @empty
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                 <tr><td colspan="5">Belum ada data supplier</td></tr>
-                @endforelse
+                <?php endif; ?>
             </table>
         </div>
     </div>
@@ -275,17 +275,23 @@
     <div id="masuk" class="hidden">
         <div class="section-box">
             <h2>📥 Barang Masuk</h2>
-            <form method="POST" action="{{ route('masuk') }}">
-                @csrf
+            <form method="POST" action="<?php echo e(route('masuk')); ?>">
+                <?php echo csrf_field(); ?>
                 <div class="form-row">
                     <select name="id_barang" required>
                         <option value="">-- Pilih Barang --</option>
-                        @foreach($barang as $b)
-                            <option value="{{ $b->id }}">{{ $b->kode_barang }} - {{ $b->nama }} (Stok: {{ $b->stok }})</option>
-                        @endforeach
+                        <?php $__currentLoopData = $barang; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $b): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($b->id); ?>"><?php echo e($b->kode_barang); ?> - <?php echo e($b->nama); ?> (Stok: <?php echo e($b->stok); ?>)</option>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </select>
+                    <select name="supplier_id">
+                        <option value="">-- Pilih Supplier (opsional) --</option>
+                        <?php $__currentLoopData = $supplier; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $s): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($s->id); ?>"><?php echo e($s->nama); ?></option>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </select>
                     <input type="number" name="jumlah" placeholder="Jumlah Masuk" min="1" required>
-                    <input type="date" name="tanggal" value="{{ date('Y-m-d') }}" required>
+                    <input type="date" name="tanggal" value="<?php echo e(date('Y-m-d')); ?>" required>
                     <button type="submit" class="btn btn-success"> Simpan </button>
                 </div>
             </form>
@@ -294,18 +300,19 @@
             <h2>Riwayat Barang Masuk</h2>
             <table>
                 <tr>
-                    <th>No</th><th>Nama Barang</th><th>Jumlah</th><th>Tanggal</th>
+                    <th>No</th><th>Nama Barang</th><th>Supplier</th><th>Jumlah</th><th>Tanggal</th>
                 </tr>
-                @forelse($riwayatMasuk as $r)
+                <?php $__empty_1 = true; $__currentLoopData = $riwayatMasuk; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $r): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                 <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $r->nama }}</td>
-                    <td><span class="badge badge-in">+{{ $r->jumlah }}</span></td>
-                    <td>{{ \Carbon\Carbon::parse($r->tanggal)->format('d/m/Y') }}</td>
+                    <td><?php echo e($loop->iteration); ?></td>
+                    <td><?php echo e($r->nama); ?></td>
+                    <td><?php echo e($r->nama_supplier ?? '-'); ?></td>
+                    <td><span class="badge badge-in">+<?php echo e($r->jumlah); ?></span></td>
+                    <td><?php echo e(\Carbon\Carbon::parse($r->tanggal)->format('d/m/Y')); ?></td>
                 </tr>
-                @empty
-                <tr><td colspan="4">Belum ada riwayat barang masuk</td></tr>
-                @endforelse
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                <tr><td colspan="5">Belum ada riwayat barang masuk</td></tr>
+                <?php endif; ?>
             </table>
         </div>
     </div>
@@ -314,17 +321,17 @@
     <div id="keluar" class="hidden">
         <div class="section-box">
             <h2>📤 Barang Keluar</h2>
-            <form method="POST" action="{{ route('keluar') }}">
-                @csrf
+            <form method="POST" action="<?php echo e(route('keluar')); ?>">
+                <?php echo csrf_field(); ?>
                 <div class="form-row">
                     <select name="id_barang" required>
                         <option value="">-- Pilih Barang --</option>
-                        @foreach($barang as $b)
-                            <option value="{{ $b->id }}">{{ $b->kode_barang }} - {{ $b->nama }} (Stok: {{ $b->stok }})</option>
-                        @endforeach
+                        <?php $__currentLoopData = $barang; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $b): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($b->id); ?>"><?php echo e($b->kode_barang); ?> - <?php echo e($b->nama); ?> (Stok: <?php echo e($b->stok); ?>)</option>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </select>
                     <input type="number" name="jumlah" placeholder="Jumlah Keluar" min="1" required>
-                    <input type="date" name="tanggal" value="{{ date('Y-m-d') }}" required>
+                    <input type="date" name="tanggal" value="<?php echo e(date('Y-m-d')); ?>" required>
                     <button type="submit" class="btn btn-danger"> Simpan </button>
                 </div>
             </form>
@@ -335,16 +342,16 @@
                 <tr>
                     <th>No</th><th>Nama Barang</th><th>Jumlah</th><th>Tanggal</th>
                 </tr>
-                @forelse($riwayatKeluar as $r)
+                <?php $__empty_1 = true; $__currentLoopData = $riwayatKeluar; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $r): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                 <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $r->nama }}</td>
-                    <td><span class="badge badge-out">-{{ $r->jumlah }}</span></td>
-                    <td>{{ \Carbon\Carbon::parse($r->tanggal)->format('d/m/Y') }}</td>
+                    <td><?php echo e($loop->iteration); ?></td>
+                    <td><?php echo e($r->nama); ?></td>
+                    <td><span class="badge badge-out">-<?php echo e($r->jumlah); ?></span></td>
+                    <td><?php echo e(\Carbon\Carbon::parse($r->tanggal)->format('d/m/Y')); ?></td>
                 </tr>
-                @empty
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                 <tr><td colspan="4">Belum ada riwayat barang keluar</td></tr>
-                @endforelse
+                <?php endif; ?>
             </table>
         </div>
     </div>
@@ -368,3 +375,4 @@ window.onload = function() {
 
 </body>
 </html>
+<?php /**PATH C:\laragon\www\laravel\gudang-ATK\resources\views/04index.blade.php ENDPATH**/ ?>

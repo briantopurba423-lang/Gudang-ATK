@@ -52,7 +52,11 @@
 <body>
 
     <div class="login-box">
+<<<<<<< HEAD
         <h2>Stok Gudang ATK</h2>
+=======
+        <h2>STOK GUDANG ATK</h2>
+>>>>>>> e1c3a3dbbc14d500e2deb3de4d7b9572f865eba4
 
         <?php if(session('error')): ?>
             <div class="error"><?php echo e(session('error')); ?></div>

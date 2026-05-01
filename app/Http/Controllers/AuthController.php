@@ -19,12 +19,12 @@ class AuthController extends Controller
         $barangMasuk   = DB::table('barang_masuk')->sum('jumlah');
         $barangKeluar  = DB::table('barang_keluar')->sum('jumlah');
 
-        return view('home', compact('totalBarang', 'totalSupplier', 'barangMasuk', 'barangKeluar'));
+        return view('01home', compact('totalBarang', 'totalSupplier', 'barangMasuk', 'barangKeluar'));
     }
 
     public function showLogin()
     {
-        return view('login');
+        return view('03login');
     }
 
     public function login(Request $request)
@@ -72,7 +72,8 @@ class AuthController extends Controller
 
         $riwayatMasuk = DB::table('barang_masuk')
             ->join('barangs', 'barang_masuk.barang_id', '=', 'barangs.id')
-            ->select('barangs.nama', 'barang_masuk.jumlah', 'barang_masuk.tanggal')
+            ->leftJoin('suppliers', 'barang_masuk.supplier_id', '=', 'suppliers.id')
+            ->select('barangs.nama', 'barang_masuk.jumlah', 'barang_masuk.tanggal', 'suppliers.nama as nama_supplier')
             ->orderByDesc('barang_masuk.tanggal')
             ->get();
 
@@ -82,7 +83,7 @@ class AuthController extends Controller
             ->orderByDesc('barang_keluar.tanggal')
             ->get();
 
-        return view('index', compact(
+        return view('04index', compact(
             'totalBarang',
             'totalSupplier',
             'barang',
@@ -112,7 +113,8 @@ class AuthController extends Controller
 
         $riwayatMasuk = DB::table('barang_masuk')
             ->join('barangs', 'barang_masuk.barang_id', '=', 'barangs.id')
-            ->select('barangs.nama', 'barang_masuk.jumlah', 'barang_masuk.tanggal')
+            ->leftJoin('suppliers', 'barang_masuk.supplier_id', '=', 'suppliers.id')
+            ->select('barangs.nama', 'barang_masuk.jumlah', 'barang_masuk.tanggal', 'suppliers.nama as nama_supplier')
             ->orderByDesc('barang_masuk.tanggal')->limit(10)->get();
 
         $riwayatKeluar = DB::table('barang_keluar')
@@ -131,7 +133,7 @@ class AuthController extends Controller
             $chartKeluar[] = DB::table('barang_keluar')->whereDate('tanggal', $date)->sum('jumlah');
         }
 
-        return view('dashboard-manager', compact(
+        return view('05dashboard-manager', compact(
             'totalBarang', 'totalSupplier', 'stokMenipis', 'stokHabis',
             'totalMasuk', 'totalKeluar', 'lowStock',
             'riwayatMasuk', 'riwayatKeluar',

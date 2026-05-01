@@ -243,4 +243,4 @@
 
 </body>
 </html>
-<?php /**PATH C:\laragon\www\laravel\gudang-ATK\resources\views/home.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\laragon\www\laravel\gudang-ATK\resources\views/01home.blade.php ENDPATH**/ ?>
