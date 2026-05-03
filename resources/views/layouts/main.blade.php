@@ -26,7 +26,7 @@
 
     @unless(isset($hideNav) && $hideNav)
         <footer>
-            <div class="footer-logo">📦 ATK Stock System</div>
+            <div class="footer-logo">📦 ATK Stok SIstem</div>
             <x-footer />
         </footer>
     @endunless
