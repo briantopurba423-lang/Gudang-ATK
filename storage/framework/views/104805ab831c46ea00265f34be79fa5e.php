@@ -133,7 +133,7 @@
 <!-- NAVBAR -->
 <nav>
     <div class="logo">📦 ATK <span>Stock</span></div>
-    <a href="{{ route('about') }}" class="nav-btn">Tentang</a>
+    <a href="<?php echo e(route('about')); ?>" class="nav-btn">Tentang</a>
 </nav>
 
 <!-- HERO -->
@@ -142,24 +142,24 @@
     <h1>Kelola Stok ATK<br><span>Lebih Mudah & Efisien</span></h1>
     <p>Pantau barang masuk, keluar, dan stok gudang secara real-time. Solusi digital untuk manajemen alat tulis kantor yang akurat.</p>
     <div class="hero-btns">
-        <a href="{{ route('login.form') }}" class="btn-white">🚀 Mulai Sekarang</a>
+        <a href="<?php echo e(route('login.form')); ?>" class="btn-white">🚀 Mulai Sekarang</a>
         <a href="#fitur" class="btn-outline">Lihat Fitur</a>
     </div>
     <div class="stats">
         <div class="stat-card">
-            <div class="num">{{ $totalBarang }}</div>
+            <div class="num"><?php echo e($totalBarang); ?></div>
             <p>Jenis Barang</p>
         </div>
         <div class="stat-card">
-            <div class="num">{{ $totalSupplier }}</div>
+            <div class="num"><?php echo e($totalSupplier); ?></div>
             <p>Supplier</p>
         </div>
         <div class="stat-card">
-            <div class="num">{{ $barangMasuk }}</div>
+            <div class="num"><?php echo e($barangMasuk); ?></div>
             <p>Total Masuk</p>
         </div>
         <div class="stat-card">
-            <div class="num">{{ $barangKeluar }}</div>
+            <div class="num"><?php echo e($barangKeluar); ?></div>
             <p>Total Keluar</p>
         </div>
     </div>
@@ -243,3 +243,4 @@
 
 </body>
 </html>
+<?php /**PATH C:\laragon\www\laravel-1\Gudang-ATK\resources\views/01home.blade.php ENDPATH**/ ?>
