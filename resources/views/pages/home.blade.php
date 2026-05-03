@@ -214,7 +214,7 @@
 <section class="hero">
     <div class="tag">✨ Sistem Manajemen Gudang ATK</div>
     <h1>Kelola Stok ATK<br><span>Lebih Mudah & Efisien</span></h1>
-    <p>Pantau barang masuk, keluar, dan stok gudang secara real-time. Solusi digital untuk manajemen alat tulis kantor yang akurat.</p>
+    <p>Memantau barang masuk, keluar, dan stok gudang secara real-time. Solusi digital untuk manajemen alat tulis kantor yang akurat.</p>
 
     <div class="hero-btns">
         <a href="{{ route('login.form') }}" class="btn-white">🚀 Mulai Sekarang</a>

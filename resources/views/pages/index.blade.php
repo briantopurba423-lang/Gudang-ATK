@@ -287,7 +287,7 @@
                         </select>
                         <input type="number" name="jumlah" placeholder="Jumlah Masuk" min="1" required>
                         <input type="date" name="tanggal" value="{{ date('Y-m-d') }}" required>
-                        <button type="submit" class="btn btn-success">+ Catat Masuk</button>
+                        <button type="submit" class="btn btn-success"> Simpan</button>
                     </div>
                 </form>
             </div>
@@ -325,7 +325,7 @@
                         </select>
                         <input type="number" name="jumlah" placeholder="Jumlah Keluar" min="1" required>
                         <input type="date" name="tanggal" value="{{ date('Y-m-d') }}" required>
-                        <button type="submit" class="btn btn-danger">- Catat Keluar</button>
+                        <button type="submit" class="btn btn-danger"> Simpan</button>
                     </div>
                 </form>
             </div>
