@@ -201,7 +201,7 @@
                                 <option value="{{ $k->id }}">{{ $k->nama }}</option>
                             @endforeach
                         </select>
-                        <button type="submit" class="btn btn-primary">+ Tambah</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
                 </form>
                 <table>
