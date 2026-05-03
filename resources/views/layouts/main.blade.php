@@ -31,5 +31,6 @@
         </footer>
     @endunless
 
+    @yield('scripts')
 </body>
 </html>

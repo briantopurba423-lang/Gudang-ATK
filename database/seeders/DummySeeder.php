@@ -38,14 +38,14 @@ class DummySeeder extends Seeder
 
         // Barang (kategori_id: 1=Alat Tulis, 2=Kertas, 3=Perlengkapan, 4=Tinta)
         $barangs = [
-            ['kode_barang' => 'ATK-001', 'nama' => 'Pulpen Pilot',        'stok' => 150, 'kategori_id' => 1],
-            ['kode_barang' => 'ATK-002', 'nama' => 'Kertas HVS A4',       'stok' => 80,  'kategori_id' => 2],
-            ['kode_barang' => 'ATK-003', 'nama' => 'Staples Besar',       'stok' => 40,  'kategori_id' => 3],
-            ['kode_barang' => 'ATK-004', 'nama' => 'Tinta Printer Hitam', 'stok' => 25,  'kategori_id' => 4],
-            ['kode_barang' => 'ATK-005', 'nama' => 'Map Plastik',         'stok' => 60,  'kategori_id' => 3],
-            ['kode_barang' => 'ATK-006', 'nama' => 'Penggaris 30cm',      'stok' => 3,   'kategori_id' => 3],
-            ['kode_barang' => 'ATK-007', 'nama' => 'Spidol Whiteboard',   'stok' => 0,   'kategori_id' => 1],
-            ['kode_barang' => 'ATK-008', 'nama' => 'Buku Tulis',          'stok' => 200, 'kategori_id' => 2],
+            ['kode_barang' => 'ATK-001', 'nama' => 'Pulpen Pilot',        'stok' => 150, 'stok_minimum' => 20, 'kategori_id' => 1, 'supplier_id' => 1],
+            ['kode_barang' => 'ATK-002', 'nama' => 'Kertas HVS A4',       'stok' => 80,  'stok_minimum' => 10, 'kategori_id' => 2, 'supplier_id' => 2],
+            ['kode_barang' => 'ATK-003', 'nama' => 'Staples Besar',       'stok' => 40,  'stok_minimum' => 5,  'kategori_id' => 3, 'supplier_id' => 3],
+            ['kode_barang' => 'ATK-004', 'nama' => 'Tinta Printer Hitam', 'stok' => 25,  'stok_minimum' => 5,  'kategori_id' => 4, 'supplier_id' => 4],
+            ['kode_barang' => 'ATK-005', 'nama' => 'Map Plastik',         'stok' => 60,  'stok_minimum' => 10, 'kategori_id' => 3, 'supplier_id' => 1],
+            ['kode_barang' => 'ATK-006', 'nama' => 'Penggaris 30cm',      'stok' => 3,   'stok_minimum' => 5,  'kategori_id' => 3, 'supplier_id' => 2],
+            ['kode_barang' => 'ATK-007', 'nama' => 'Spidol Whiteboard',   'stok' => 0,   'stok_minimum' => 5,  'kategori_id' => 1, 'supplier_id' => 3],
+            ['kode_barang' => 'ATK-008', 'nama' => 'Buku Tulis',          'stok' => 200, 'stok_minimum' => 30, 'kategori_id' => 2, 'supplier_id' => 4],
         ];
         foreach ($barangs as $b) {
             DB::table('barangs')->insert(array_merge($b, [

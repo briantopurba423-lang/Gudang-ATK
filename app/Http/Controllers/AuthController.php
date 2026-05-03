@@ -71,11 +71,12 @@ class AuthController extends Controller
 
         $totalBarang   = Barang::count();
         $totalSupplier = Supplier::count();
-        $barang        = Barang::with('kategori')->get();
+        $barang        = Barang::with('kategori', 'supplier')->get();
         $supplier      = Supplier::all();
         $kategori      = Kategori::withCount('barangs')->get();
         $barangMasuk   = DB::table('barang_masuk')->sum('jumlah');
         $barangKeluar  = DB::table('barang_keluar')->sum('jumlah');
+        $stokPeringatan = Barang::whereColumn('stok', '<=', 'stok_minimum')->count();
 
         $riwayatMasuk = DB::table('barang_masuk')
             ->join('barangs', 'barang_masuk.barang_id', '=', 'barangs.id')
@@ -98,6 +99,7 @@ class AuthController extends Controller
             'kategori',
             'barangMasuk',
             'barangKeluar',
+            'stokPeringatan',
             'riwayatMasuk',
             'riwayatKeluar'
         ))->with('hideNav', true);
@@ -111,12 +113,12 @@ class AuthController extends Controller
 
         $totalBarang   = Barang::count();
         $totalSupplier = Supplier::count();
-        $stokMenipis   = Barang::where('stok', '>', 0)->where('stok', '<', 10)->count();
+        $stokMenipis   = Barang::where('stok', '>', 0)->whereColumn('stok', '<=', 'stok_minimum')->count();
         $stokHabis     = Barang::where('stok', 0)->count();
         $totalMasuk    = DB::table('barang_masuk')->sum('jumlah');
         $totalKeluar   = DB::table('barang_keluar')->sum('jumlah');
 
-        $lowStock = Barang::where('stok', '<', 10)->orderBy('stok')->get();
+        $lowStock = Barang::whereColumn('stok', '<=', 'stok_minimum')->orderBy('stok')->get();
 
         $riwayatMasuk = DB::table('barang_masuk')
             ->join('barangs', 'barang_masuk.barang_id', '=', 'barangs.id')
