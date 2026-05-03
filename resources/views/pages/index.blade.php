@@ -70,7 +70,7 @@
 
     {{-- SIDEBAR --}}
     <div class="sidebar">
-        <h2>📦 ATK System</h2>
+        <h2>📦 ATK SISTEM</h2>
         <a onclick="showPage('dashboard')" id="nav-dashboard">🏠 Dashboard</a>
         <a onclick="showPage('kategori')"  id="nav-kategori">🏷️ Kategori</a>
         <a onclick="showPage('barang')"    id="nav-barang">📋 Data Barang</a>

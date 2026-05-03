@@ -1,3 +1,8 @@
+
+@php
+    $hideNav = true;
+@endphp
+
 @extends('layouts.main')
 
 @section('title', 'Tentang Sistem')
@@ -100,6 +105,16 @@
                 <div style="text-align:center;">
                     <img src="{{ asset('foto4.jpg') }}" style="width:50%; border-radius:12px; object-fit:cover;">
                     <p style="margin-top:8px; font-size:14px; color:#475569;">SPIDOL</p>
+                </div>
+
+                <div style="text-align:center;">
+                    <img src="{{ asset('foto5.jpg') }}" style="width:50%; border-radius:12px; object-fit:cover;">
+                    <p style="margin-top:8px; font-size:14px; color:#475569;">PENGHAPUS</p>
+                </div>
+
+                <div style="text-align:center;">
+                    <img src="{{ asset('foto6.jpg') }}" style="width:50%; border-radius:12px; object-fit:cover;">
+                    <p style="margin-top:8px; font-size:14px; color:#475569;">PENSIL</p>
                 </div>
             </div>
         </div>

@@ -1,4 +1,10 @@
+
+@php
+    $hideNav = true;
+@endphp
+
 @extends('layouts.main')
+
 
 @section('title', 'Login')
 
@@ -74,7 +80,7 @@
                 <option value="manager">Manager</option>
             </select>
 
-            <button type="submit">Login</button>
+            <button type="submit">Masuk</button>
         </form>
     </div>
 </div>
