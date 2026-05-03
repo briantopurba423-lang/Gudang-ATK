@@ -80,7 +80,7 @@
         <div class="logout-wrap">
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
-                <button type="submit">🚪 Logout</button>
+                <button type="submit"> keluar </button>
             </form>
         </div>
     </div>
