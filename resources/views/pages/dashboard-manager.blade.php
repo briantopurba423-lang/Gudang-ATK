@@ -262,7 +262,7 @@
         <div class="page-header">
             <div>
                 <h1>Selamat Datang, {{ Session::get('username') }}!</h1>
-                <p>Ringkasan aktivitas inventaris gudang ATK.</p>
+                <p> Aktivitas inventaris gudang ATK.</p>
             </div>
 
             <a href="{{ route('export.excel') }}" class="btn-export">
