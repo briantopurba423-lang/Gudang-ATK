@@ -244,7 +244,7 @@
 <section id="fitur">
     <div class="section-title">
         <h2>Fitur Unggulan</h2>
-        <p>Semua yang kamu butuhkan untuk mengelola stok ATK dalam satu sistem</p>
+        <p>Semua yang kamu butuhkan untuk mengelola stok Alat Tulis Kantor dalam satu sistem</p>
     </div>
 
     <div class="features-grid">
@@ -289,7 +289,7 @@
 <section class="how-bg">
     <div class="section-title">
         <h2>Cara Kerja</h2>
-        <p>Hanya 3 langkah untuk mulai mengelola stok ATK kamu</p>
+        <p>Hanya 3 langkah untuk mulai mengelola stok Alat Tulis Kantor kamu</p>
     </div>
 
     <div class="steps">
