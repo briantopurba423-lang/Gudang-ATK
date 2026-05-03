@@ -19,12 +19,19 @@ class AuthController extends Controller
         $barangMasuk   = DB::table('barang_masuk')->sum('jumlah');
         $barangKeluar  = DB::table('barang_keluar')->sum('jumlah');
 
-        return view('01home', compact('totalBarang', 'totalSupplier', 'barangMasuk', 'barangKeluar'));
+        return view('pages.home', compact('totalBarang', 'totalSupplier', 'barangMasuk', 'barangKeluar'))
+            ->with('active', 'home');
+    }
+
+    public function product()
+    {
+        $barang = Barang::with('kategori')->get();
+        return view('pages.product', compact('barang'))->with('active', 'product');
     }
 
     public function showLogin()
     {
-        return view('03login');
+        return view('pages.login')->with('active', 'login');
     }
 
     public function login(Request $request)
@@ -83,7 +90,7 @@ class AuthController extends Controller
             ->orderByDesc('barang_keluar.tanggal')
             ->get();
 
-        return view('04index', compact(
+        return view('pages.index', compact(
             'totalBarang',
             'totalSupplier',
             'barang',
@@ -93,7 +100,7 @@ class AuthController extends Controller
             'barangKeluar',
             'riwayatMasuk',
             'riwayatKeluar'
-        ));
+        ))->with('hideNav', true);
     }
 
     public function dashboardManager()
@@ -133,12 +140,12 @@ class AuthController extends Controller
             $chartKeluar[] = DB::table('barang_keluar')->whereDate('tanggal', $date)->sum('jumlah');
         }
 
-        return view('05dashboard-manager', compact(
+        return view('pages.dashboard-manager', compact(
             'totalBarang', 'totalSupplier', 'stokMenipis', 'stokHabis',
             'totalMasuk', 'totalKeluar', 'lowStock',
             'riwayatMasuk', 'riwayatKeluar',
             'chartLabels', 'chartMasuk', 'chartKeluar'
-        ));
+        ))->with('hideNav', true);
     }
 
     public function logout()
