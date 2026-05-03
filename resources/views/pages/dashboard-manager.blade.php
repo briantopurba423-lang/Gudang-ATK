@@ -242,13 +242,12 @@
             <small>{{ Session::get('username') }} · Manager</small>
         </div>
 
-        <a href="#" class="active" onclick="return false;">📊 Overview</a>
-        <a href="{{ route('index') }}">🏠 Ke Dashboard Admin</a>
-
+        <a href="#" class="active" onclick="return false;">Dashboard</a>
+       
         <div class="logout-wrap">
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
-                <button type="submit">🚪 Logout</button>
+                <button type="submit">Keluar</button>
             </form>
         </div>
     </div>

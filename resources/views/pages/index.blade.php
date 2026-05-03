@@ -99,11 +99,13 @@
       </div>
     </nav>
     <div class="sidebar-footer">
-      <form action="{{ route('logout') }}" method="POST">
-        @csrf
-        <button type="submit" class="btn-logout">🚪 Logout</button>
-      </form>
-    </div>
+  <form action="{{ route('logout') }}" method="POST">
+    @csrf
+    <button type="submit" class="btn-logout">
+      <span>🚪</span> Keluar
+    </button>
+  </form>
+</div>
   </aside>
 
   {{-- MAIN CONTENT --}}
