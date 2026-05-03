@@ -99,17 +99,13 @@
       </div>
     </nav>
     <div class="sidebar-footer">
-      <form action="{{ route('logout') }}" method="POST">
-        @csrf
-<<<<<<< HEAD
-        <button type="submit" class="btn-logout">
-          <span>🚪</span> Keluar
-        </button>
-=======
-        <button type="submit" class="btn-logout">🚪 Logout</button>
->>>>>>> 7e9468e9332a2f0bc4660c7257250514749c841b
-      </form>
-    </div>
+  <form action="{{ route('logout') }}" method="POST">
+    @csrf
+    <button type="submit" class="btn-logout">
+      <span>🚪</span> Keluar
+    </button>
+  </form>
+</div>
   </aside>
 
   {{-- MAIN CONTENT --}}
