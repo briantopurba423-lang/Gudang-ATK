@@ -15,8 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('kode_barang')->unique();
             $table->string('nama');
-            $table->integer('stok');
+            $table->integer('stok')->default(0);
+            $table->integer('stok_minimum')->default(5);
             $table->foreignId('kategori_id')->nullable()->constrained('kategoris')->nullOnDelete();
+            $table->unsignedBigInteger('supplier_id')->nullable();
             $table->timestamps();
         });
     }

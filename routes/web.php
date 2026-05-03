@@ -34,6 +34,7 @@ Route::prefix('barang')->group(function () {
     Route::post('/',       [BarangController::class, 'store'])->name('barang.store');
     Route::put('/{id}',    [BarangController::class, 'update'])->name('barang.update');
     Route::delete('/{id}', [BarangController::class, 'destroy'])->name('barang.destroy');
+    
 });
 
 
@@ -50,6 +51,7 @@ Route::post('/keluar', [TransaksiController::class, 'keluar'])->name('keluar');
 
 Route::prefix('kategori')->group(function () {
     Route::post('/',       [KategoriController::class, 'store'])->name('kategori.store');
+    Route::put('/{id}',    [KategoriController::class, 'update'])->name('kategori.update');
     Route::delete('/{id}', [KategoriController::class, 'destroy'])->name('kategori.destroy');
 });
 
