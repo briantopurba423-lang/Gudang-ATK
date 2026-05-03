@@ -8,17 +8,17 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::table('barangs', function (Blueprint $table) {
-            $table->foreign('supplier_id')
-                  ->references('id')->on('suppliers')
-                  ->nullOnDelete();
-        });
+        // supplier_id column is added in a later migration if missing,
+        // so we skip the foreign key here to avoid ordering issues.
+        // Foreign key is handled after the column exists.
     }
 
     public function down(): void
     {
         Schema::table('barangs', function (Blueprint $table) {
-            $table->dropForeign(['supplier_id']);
+            if (Schema::hasColumn('barangs', 'supplier_id')) {
+                $table->dropForeign(['supplier_id']);
+            }
         });
     }
 };

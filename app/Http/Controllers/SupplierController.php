@@ -11,7 +11,7 @@ class SupplierController extends Controller
     {
         $request->validate([
             'nama'   => 'required|string',
-            'kontak' => 'required|string',
+            'kontak' => 'nullable|string',
             'alamat' => 'nullable|string',
         ]);
 
@@ -23,7 +23,7 @@ class SupplierController extends Controller
     {
         $request->validate([
             'nama'   => 'required|string',
-            'kontak' => 'required|string',
+            'kontak' => 'nullable|string',
             'alamat' => 'nullable|string',
         ]);
 
