@@ -314,7 +314,7 @@
               </div>
             </div>
             <div style="margin-top:14px;">
-              <button type="submit" class="btn btn-primary">➕ Tambah Barang</button>
+              <button type="submit" class="btn btn-primary">Simpan</button>
             </div>
           </form>
         </div>
@@ -373,11 +373,11 @@
             <div class="form-grid">
               <div class="form-group">
                 <label>Nama Supplier</label>
-                <input type="text" name="nama" class="form-control" placeholder="Nama perusahaan / toko" required>
+                <input type="text" name="nama" class="form-control" placeholder="Nama perusahaan" required>
               </div>
               <div class="form-group">
                 <label>Kontak</label>
-                <input type="text" name="kontak" class="form-control" placeholder="No. HP / Email">
+                <input type="text" name="kontak" class="form-control" placeholder="No. HP">
               </div>
               <div class="form-group">
                 <label>Alamat</label>
