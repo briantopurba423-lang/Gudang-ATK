@@ -40,12 +40,10 @@ class AuthController extends Controller
         $request->validate([
             'username' => 'required',
             'password' => 'required',
-            'role'     => 'required'
         ]);
 
         $user = DB::table('users')
             ->where('username', $request->username)
-            ->where('role', $request->role)
             ->first();
 
         if ($user && Hash::check($request->password, $user->password)) {
@@ -53,7 +51,6 @@ class AuthController extends Controller
             Session::put('role', $user->role);
             Session::put('status', 'login');
 
-            // Redirect berdasarkan role
             if ($user->role === 'manager') {
                 return redirect()->route('manager.dashboard');
             }
@@ -61,7 +58,7 @@ class AuthController extends Controller
             return redirect()->route('index');
         }
 
-        return back()->with('error', 'Username, password, atau role salah!');
+        return back()->with('error', 'Username atau password salah!');
     }
 
     public function index()
@@ -82,13 +79,13 @@ class AuthController extends Controller
         $riwayatMasuk = DB::table('barang_masuk')
             ->join('barangs', 'barang_masuk.barang_id', '=', 'barangs.id')
             ->leftJoin('suppliers', 'barang_masuk.supplier_id', '=', 'suppliers.id')
-            ->select('barangs.nama', 'barang_masuk.jumlah', 'barang_masuk.tanggal', 'suppliers.nama as nama_supplier')
+            ->select('barangs.nama', 'barang_masuk.jumlah', 'barang_masuk.harga_satuan', 'barang_masuk.tanggal', 'suppliers.nama as nama_supplier')
             ->orderByDesc('barang_masuk.tanggal')
             ->get();
 
         $riwayatKeluar = DB::table('barang_keluar')
             ->join('barangs', 'barang_keluar.barang_id', '=', 'barangs.id')
-            ->select('barangs.nama', 'barang_keluar.jumlah', 'barang_keluar.tanggal')
+            ->select('barangs.nama', 'barang_keluar.jumlah', 'barang_keluar.harga_satuan', 'barang_keluar.tanggal')
             ->orderByDesc('barang_keluar.tanggal')
             ->get();
 

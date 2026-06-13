@@ -10,6 +10,9 @@ class Barang extends Model
     protected $fillable = [
         'kode_barang',
         'nama',
+        'merek',
+        'satuan',
+        'deskripsi',
         'stok',
         'stok_minimum',
         'kategori_id',
@@ -38,8 +41,8 @@ class Barang extends Model
 
     public function getStatusStokAttribute(): string
     {
-        if ($this->stok <= 0) return 'habis';
-        if ($this->stok <= $this->stok_minimum) return 'menipis';
-        return 'aman';
+        if ($this->stok <= 0) return 'kosong';
+        if ($this->stok <= $this->stok_minimum) return 'sedikit';
+        return 'tersedia';
     }
 }
