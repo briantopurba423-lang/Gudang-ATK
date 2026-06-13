@@ -1,7 +1,4 @@
 
-@php
-    $hideNav = true;
-@endphp
 
 @extends('layouts.main')
 

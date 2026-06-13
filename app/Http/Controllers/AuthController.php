@@ -25,8 +25,9 @@ class AuthController extends Controller
 
     public function product()
     {
-        $barang = Barang::with('kategori')->get();
-        return view('pages.product', compact('barang'))->with('active', 'product');
+        $barang   = \App\Models\Barang::with('kategori', 'supplier')->get();
+        $kategori = \App\Models\Kategori::all();
+        return view('pages.product', compact('barang', 'kategori'))->with('active', 'product');
     }
 
     public function showLogin()
