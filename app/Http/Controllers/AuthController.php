@@ -64,7 +64,7 @@ class AuthController extends Controller
     public function index()
     {
         if (!Session::get('status')) {
-            return redirect()->route('login.form');
+            return redirect()->route('index');
         }
 
         $totalBarang   = Barang::count();
