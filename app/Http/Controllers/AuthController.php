@@ -48,7 +48,6 @@ class AuthController extends Controller
 
         if ($user && Hash::check($request->password, $user->password)) {
             Session::put('username', $user->username);
-            Session::put('role', $user->role);
             Session::put('status', 'login');
 
             if ($user->role === 'manager') {
