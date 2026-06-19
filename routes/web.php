@@ -8,6 +8,7 @@ use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\ExportController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\NotifikasiController;
 
 
 Route::get('/',      [AuthController::class, 'home'])->name('home');
@@ -60,3 +61,6 @@ Route::prefix('kategori')->group(function () {
 
 
 Route::get('/export/excel', [ExportController::class, 'exportExcel'])->name('export.excel');
+
+// Notifikasi stok rendah (AJAX polling)
+Route::get('/api/notifikasi-stok', [NotifikasiController::class, 'stokRendah'])->name('notifikasi.stok');
