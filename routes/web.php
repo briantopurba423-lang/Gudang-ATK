@@ -16,25 +16,28 @@ Route::get('/home',  [AuthController::class, 'home']);
 Route::prefix('pages')->group(function () {
     Route::get('/home',     [AuthController::class, 'home'])->name('pages.home');
     Route::get('/about',    fn() => view('pages.about', ['active' => 'about']))->name('about');
-  
+    Route::get('/product',  [AuthController::class, 'product'])->name('pages.product');
+    Route::get('/register', fn() => view('pages.register', ['active' => 'register']))->name('pages.register');
 });
 
-Route::get('/list-product', [ProductController::class, 'index'])->name('list.product');
+
+Route::get('/list-product',  [ProductController::class, 'index'])->name('list.product');
+Route::post('/list-product', [ProductController::class, 'simpan'])->name('produk.simpan');
 
 
 Route::get('/login',   [AuthController::class, 'showLogin'])->name('login.form');
 Route::post('/login',  [AuthController::class, 'login'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-
 Route::get('/dashboard', [AuthController::class, 'index'])->name('index');
+Route::get('/index',     fn() => redirect()->route('index'));
 Route::get('/manager',   [AuthController::class, 'dashboardManager'])->name('manager.dashboard');
+
 
 Route::prefix('barang')->group(function () {
     Route::post('/',       [BarangController::class, 'store'])->name('barang.store');
     Route::put('/{id}',    [BarangController::class, 'update'])->name('barang.update');
     Route::delete('/{id}', [BarangController::class, 'destroy'])->name('barang.destroy');
-    
 });
 
 

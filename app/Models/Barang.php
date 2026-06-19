@@ -6,7 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Barang extends Model
 {
-    protected $fillable = ['kode_barang', 'nama', 'stok', 'stok_minimum', 'kategori_id', 'supplier_id'];
+    // Tabel yang digunakan adalah 'barangs' (default Laravel)
+    protected $fillable = [
+        'kode_barang',
+        'nama',
+        'merek',
+        'satuan',
+        'deskripsi',
+        'stok',
+        'stok_minimum',
+        'kategori_id',
+        'supplier_id',
+    ];
 
     protected static function booted(): void
     {
@@ -28,16 +39,10 @@ class Barang extends Model
         return $this->belongsTo(Supplier::class);
     }
 
-    // Cek apakah stok di bawah minimum
-    public function isBelowMinimum(): bool
-    {
-        return $this->stok <= $this->stok_minimum;
-    }
-
     public function getStatusStokAttribute(): string
     {
-        if ($this->stok <= 0) return 'habis';
-        if ($this->stok <= $this->stok_minimum) return 'menipis';
-        return 'aman';
+        if ($this->stok <= 0) return 'kosong';
+        if ($this->stok <= $this->stok_minimum) return 'sedikit';
+        return 'tersedia';
     }
 }

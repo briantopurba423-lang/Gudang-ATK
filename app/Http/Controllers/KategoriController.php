@@ -10,22 +10,20 @@ class KategoriController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama'      => 'required|string|unique:kategoris,nama',
-            'deskripsi' => 'nullable|string',
+            'nama' => 'required|string|unique:kategoris,nama',
         ]);
 
-        Kategori::create($request->only('nama', 'deskripsi'));
+        Kategori::create($request->only('nama'));
         return redirect()->route('index')->with('success', 'Kategori berhasil ditambahkan.');
     }
 
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama'      => 'required|string|unique:kategoris,nama,' . $id,
-            'deskripsi' => 'nullable|string',
+            'nama' => 'required|string|unique:kategoris,nama,' . $id,
         ]);
 
-        Kategori::findOrFail($id)->update($request->only('nama', 'deskripsi'));
+        Kategori::findOrFail($id)->update($request->only('nama'));
         return redirect()->route('index')->with('success', 'Kategori berhasil diupdate.');
     }
 

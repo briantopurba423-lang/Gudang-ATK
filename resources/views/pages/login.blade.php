@@ -74,12 +74,6 @@
             <input type="text" name="username" placeholder="Username" required>
             <input type="password" name="password" placeholder="Password" required>
 
-            <select name="role" required>
-                <option value="">-- Pilih Role --</option>
-                <option value="admin">Admin</option>
-                <option value="manager">Manager</option>
-            </select>
-
             <button type="submit">Masuk</button>
         </form>
     </div>

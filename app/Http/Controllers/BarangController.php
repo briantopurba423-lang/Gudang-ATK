@@ -11,13 +11,16 @@ class BarangController extends Controller
     {
         $request->validate([
             'nama'         => 'required|string',
+            'merek'        => 'nullable|string',
+            'satuan'       => 'nullable|string',
+            'deskripsi'    => 'nullable|string',
             'stok'         => 'required|integer|min:0',
             'stok_minimum' => 'nullable|integer|min:0',
             'kategori_id'  => 'nullable|exists:kategoris,id',
             'supplier_id'  => 'nullable|exists:suppliers,id',
         ]);
 
-        Barang::create($request->only('nama', 'stok', 'stok_minimum', 'kategori_id', 'supplier_id'));
+        Barang::create($request->only('nama', 'merek', 'satuan', 'deskripsi', 'stok', 'stok_minimum', 'kategori_id', 'supplier_id'));
         return redirect()->route('index')->with('success', 'Barang berhasil ditambahkan.');
     }
 
@@ -25,13 +28,16 @@ class BarangController extends Controller
     {
         $request->validate([
             'nama'         => 'required|string',
+            'merek'        => 'nullable|string',
+            'satuan'       => 'nullable|string',
+            'deskripsi'    => 'nullable|string',
             'stok'         => 'required|integer|min:0',
             'stok_minimum' => 'nullable|integer|min:0',
             'kategori_id'  => 'nullable|exists:kategoris,id',
             'supplier_id'  => 'nullable|exists:suppliers,id',
         ]);
 
-        Barang::findOrFail($id)->update($request->only('nama', 'stok', 'stok_minimum', 'kategori_id', 'supplier_id'));
+        Barang::findOrFail($id)->update($request->only('nama', 'merek', 'satuan', 'deskripsi', 'stok', 'stok_minimum', 'kategori_id', 'supplier_id'));
         return redirect()->route('index')->with('success', 'Barang berhasil diupdate.');
     }
 
