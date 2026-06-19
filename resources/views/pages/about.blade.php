@@ -35,8 +35,7 @@
                 📦 ATK Stock System
             </h2>
             <p style="line-height:1.7; opacity:0.95;">
-                Aplikasi berbasis web untuk mengelola stok alat tulis kantor secara real-time.
-                Membantu pencatatan barang masuk & keluar dengan lebih akurat dan efisien.
+                Sistem berbasis web yang membantu monitoring stok secara real-time, pencatatan inventaris yang akurat, dan pengelolaan gudang yang lebih efisien.
             </p>
         </div>
 
