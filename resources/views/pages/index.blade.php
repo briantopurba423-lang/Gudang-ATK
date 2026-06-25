@@ -1183,10 +1183,10 @@
   }
 
   // Jalankan saat halaman pertama load
-  //fetchNotifStok();
+  fetchNotifStok();
 
   // Polling tiap 15 detik
-  //setInterval(fetchNotifStok, NOTIF_INTERVAL_MS);
+  setInterval(fetchNotifStok, NOTIF_INTERVAL_MS);
 
   // Tutup panel saat klik di luar
   document.addEventListener('click', function(e) {

@@ -50,6 +50,7 @@ Route::prefix('supplier')->group(function () {
 
 
 Route::post('/masuk',  [TransaksiController::class, 'masuk'])->name('masuk');
+// Route::post('/masuk',  function() { dd("test"); })->name('masuk');
 Route::post('/keluar', [TransaksiController::class, 'keluar'])->name('keluar');
 
 
