@@ -82,6 +82,134 @@
   }
   .riwayat-no-result td { text-align: center; color: #94a3b8; padding: 24px; font-size: 14px; }
 
+  /* ===== NOTIFIKASI STOK RENDAH ===== */
+  .notif-bell-wrapper {
+    position: relative;
+    display: flex; align-items: center;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-left: 3px solid transparent;
+    color: rgba(255,255,255,0.75);
+    font-size: 14px; font-weight: 500;
+    transition: all 0.2s;
+    gap: 12px;
+  }
+  .notif-bell-wrapper:hover { background: var(--sidebar-hover); color: #fff; border-left-color: rgba(255,255,255,0.3); }
+  .notif-bell-badge {
+    display: none;
+    position: absolute;
+    top: 6px; left: 30px;
+    background: #e74c3c;
+    color: #fff;
+    font-size: 10px; font-weight: 700;
+    min-width: 18px; height: 18px;
+    border-radius: 9px;
+    line-height: 18px; text-align: center;
+    padding: 0 4px;
+    border: 2px solid var(--sidebar-bg);
+    animation: pulse-badge 1.5s infinite;
+  }
+  @keyframes pulse-badge {
+    0%, 100% { transform: scale(1); }
+    50%       { transform: scale(1.2); }
+  }
+
+  /* Panel dropdown notifikasi */
+  .notif-panel {
+    display: none;
+    position: fixed;
+    top: 0; left: 240px;
+    width: 360px;
+    max-height: 100vh;
+    background: #fff;
+    box-shadow: 4px 0 24px rgba(0,0,0,0.15);
+    z-index: 200;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .notif-panel.open { display: flex; }
+  .notif-panel-header {
+    padding: 16px 18px;
+    background: #fff7ed;
+    border-bottom: 1px solid #fed7aa;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .notif-panel-header h3 { font-size: 15px; font-weight: 700; color: #c2410c; }
+  .notif-panel-close {
+    background: none; border: none; font-size: 20px;
+    cursor: pointer; color: #94a3b8; line-height: 1;
+  }
+  .notif-panel-close:hover { color: #e74c3c; }
+  .notif-panel-body { overflow-y: auto; flex: 1; }
+  .notif-panel-empty {
+    padding: 40px 20px; text-align: center;
+    color: #94a3b8; font-size: 14px;
+  }
+  .notif-item {
+    padding: 14px 18px;
+    border-bottom: 1px solid #f1f5f9;
+    display: flex; align-items: flex-start; gap: 12px;
+    transition: background 0.15s;
+  }
+  .notif-item:hover { background: #fef9f0; }
+  .notif-item-icon {
+    font-size: 22px; flex-shrink: 0;
+    width: 38px; height: 38px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 8px;
+  }
+  .notif-icon-kosong { background: #fee2e2; }
+  .notif-icon-sedikit { background: #fef9c3; }
+  .notif-item-body { flex: 1; }
+  .notif-item-nama { font-size: 13px; font-weight: 600; color: #1e293b; }
+  .notif-item-kode { font-size: 11px; color: #94a3b8; margin-bottom: 3px; }
+  .notif-item-stok { font-size: 12px; color: #64748b; }
+  .notif-item-stok strong { color: #e74c3c; }
+  .notif-item-pesan { font-size: 11px; margin-top: 4px; padding: 3px 8px; border-radius: 4px; display: inline-block; }
+  .notif-pesan-kosong { background: #fee2e2; color: #991b1b; }
+  .notif-pesan-sedikit { background: #fef9c3; color: #854d0e; }
+  .notif-panel-footer {
+    padding: 12px 18px;
+    border-top: 1px solid #f1f5f9;
+    font-size: 11px; color: #94a3b8;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .notif-refresh-spin { animation: spin 1s linear infinite; }
+  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+  /* Toast banner stok rendah */
+  .stok-toast-container {
+    position: fixed;
+    top: 20px; right: 20px;
+    z-index: 9999;
+    display: flex; flex-direction: column; gap: 10px;
+    max-width: 340px;
+  }
+  .stok-toast {
+    background: #fff;
+    border-left: 4px solid #f59e0b;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    padding: 14px 16px;
+    display: flex; align-items: flex-start; gap: 10px;
+    animation: slideIn 0.3s ease;
+  }
+  .stok-toast.kosong { border-left-color: #e74c3c; }
+  .stok-toast-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+  .stok-toast-body { flex: 1; }
+  .stok-toast-title { font-size: 13px; font-weight: 700; color: #1e293b; }
+  .stok-toast-msg { font-size: 12px; color: #64748b; margin-top: 2px; }
+  .stok-toast-close {
+    background: none; border: none;
+    font-size: 16px; cursor: pointer; color: #94a3b8;
+    flex-shrink: 0; line-height: 1; padding: 0;
+  }
+  .stok-toast-close:hover { color: #e74c3c; }
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(40px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
   @media (max-width: 768px) {
     .sidebar { width: 200px; }
     .main-content { margin-left: 200px; padding: 16px; }
@@ -114,6 +242,12 @@
       </div>
       <div class="nav-item" id="nav-keluar" onclick="showPage('keluar')">
         <span class="icon">📤</span> Barang Keluar
+      </div>
+      {{-- Bell Notifikasi Stok --}}
+      <div class="notif-bell-wrapper" id="notif-bell" onclick="toggleNotifPanel()" title="Notifikasi Stok Rendah">
+        <span class="icon">🔔</span>
+        <span>Notifikasi</span>
+        <span class="notif-bell-badge" id="notif-badge">0</span>
       </div>
     </nav>
     <div class="sidebar-footer">
@@ -626,6 +760,28 @@
   </main>
 </div>
 
+{{-- ===== PANEL NOTIFIKASI STOK RENDAH ===== --}}
+<div class="notif-panel" id="notif-panel">
+  <div class="notif-panel-header">
+    <h3>🔔 Notifikasi Stok Rendah</h3>
+    <button class="notif-panel-close" onclick="toggleNotifPanel()" title="Tutup">&times;</button>
+  </div>
+  <div class="notif-panel-body" id="notif-panel-body">
+    <div class="notif-panel-empty" id="notif-empty">
+      <div style="font-size:36px; margin-bottom:8px;">✅</div>
+      Semua stok dalam kondisi aman.
+    </div>
+    <div id="notif-list"></div>
+  </div>
+  <div class="notif-panel-footer">
+    <span id="notif-last-update">Memuat data…</span>
+    <span id="notif-refresh-icon" title="Memperbarui…"></span>
+  </div>
+</div>
+
+{{-- ===== TOAST CONTAINER ===== --}}
+<div class="stok-toast-container" id="toast-container"></div>
+
 {{-- ===== MODAL EDIT BARANG ===== --}}
 <div class="modal-backdrop" id="modal-edit-barang" onclick="handleBackdropClick(event, 'modal-edit-barang')">
   <div class="modal-box" onclick="event.stopPropagation()">
@@ -894,5 +1050,151 @@
 
   const hash = window.location.hash.replace('#', '');
   if (hash) showPage(hash);
+
+  // ===== NOTIFIKASI STOK RENDAH (AJAX POLLING) =====
+  const NOTIF_INTERVAL_MS = 15000; // polling tiap 15 detik
+  let prevTotalNotif = -1;         // deteksi perubahan untuk toast
+  let toastShownIds = new Set();   // hindari toast duplikat per sesi
+
+  function toggleNotifPanel() {
+    const panel = document.getElementById('notif-panel');
+    panel.classList.toggle('open');
+  }
+
+  function updateNotifBadge(total) {
+    const badge = document.getElementById('notif-badge');
+    if (total > 0) {
+      badge.textContent = total > 99 ? '99+' : total;
+      badge.style.display = 'block';
+    } else {
+      badge.style.display = 'none';
+    }
+  }
+
+  function renderNotifPanel(data) {
+    const list  = document.getElementById('notif-list');
+    const empty = document.getElementById('notif-empty');
+
+    if (!data.barang || data.barang.length === 0) {
+      list.innerHTML  = '';
+      empty.style.display = 'block';
+      return;
+    }
+
+    empty.style.display = 'none';
+    list.innerHTML = data.barang.map(b => {
+      const isKosong   = b.status === 'kosong';
+      const iconClass  = isKosong ? 'notif-icon-kosong'  : 'notif-icon-sedikit';
+      const icon       = isKosong ? '🔴' : '⚠️';
+      const pesanClass = isKosong ? 'notif-pesan-kosong' : 'notif-pesan-sedikit';
+      const pesan      = isKosong
+        ? '⚡ Stok habis! Segera lakukan restock.'
+        : '⚠️ Stok menipis. Segera restock.';
+      return `
+        <div class="notif-item">
+          <div class="notif-item-icon ${iconClass}">${icon}</div>
+          <div class="notif-item-body">
+            <div class="notif-item-kode">${b.kode_barang}</div>
+            <div class="notif-item-nama">${b.nama}</div>
+            <div class="notif-item-stok">
+              Stok saat ini: <strong>${b.stok} ${b.satuan}</strong>
+              &nbsp;|&nbsp; Min: ${b.stok_minimum} ${b.satuan}
+              &nbsp;|&nbsp; Kategori: ${b.kategori}
+            </div>
+            <span class="notif-item-pesan ${pesanClass}">${pesan}</span>
+          </div>
+        </div>`;
+    }).join('');
+  }
+
+  function showToast(barang) {
+    const container = document.getElementById('toast-container');
+    const isKosong  = barang.status === 'kosong';
+    const icon      = isKosong ? '🔴' : '⚠️';
+    const title     = isKosong ? 'Stok Habis!' : 'Stok Menipis!';
+    const msg       = `${barang.nama} — sisa ${barang.stok} ${barang.satuan}. Segera restock!`;
+
+    const toast = document.createElement('div');
+    toast.className = `stok-toast${isKosong ? ' kosong' : ''}`;
+    toast.innerHTML = `
+      <span class="stok-toast-icon">${icon}</span>
+      <div class="stok-toast-body">
+        <div class="stok-toast-title">${title}</div>
+        <div class="stok-toast-msg">${msg}</div>
+      </div>
+      <button class="stok-toast-close" onclick="this.closest('.stok-toast').remove()" title="Tutup">&times;</button>
+    `;
+    container.prepend(toast);
+
+    // Auto-hilang setelah 7 detik
+    setTimeout(() => {
+      toast.style.transition = 'opacity 0.4s, transform 0.4s';
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateX(40px)';
+      setTimeout(() => toast.remove(), 400);
+    }, 7000);
+  }
+
+  function setRefreshIcon(spinning) {
+    const el = document.getElementById('notif-refresh-icon');
+    el.textContent = spinning ? '🔄' : '';
+    el.className   = spinning ? 'notif-refresh-spin' : '';
+  }
+
+  function fetchNotifStok() {
+    setRefreshIcon(true);
+    fetch('{{ route("notifikasi.stok") }}')
+      .then(res => {
+        if (res.status === 401) return null;
+        return res.json();
+      })
+      .then(data => {
+        if (!data) return;
+
+        setRefreshIcon(false);
+        updateNotifBadge(data.total);
+        renderNotifPanel(data);
+
+        // Update timestamp
+        const now = new Date();
+        document.getElementById('notif-last-update').textContent =
+          'Update: ' + now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+
+        // Tampilkan toast hanya saat ada perubahan data (lebih banyak / baru pertama load)
+        if (data.barang && data.barang.length > 0) {
+          data.barang.forEach(b => {
+            if (!toastShownIds.has(b.id)) {
+              toastShownIds.add(b.id);
+              showToast(b);
+            }
+          });
+        }
+
+        // Reset set jika stok kembali aman (supaya nanti toast muncul lagi)
+        if (data.total === 0 && prevTotalNotif > 0) {
+          toastShownIds.clear();
+        }
+
+        prevTotalNotif = data.total;
+      })
+      .catch(() => {
+        setRefreshIcon(false);
+      });
+  }
+
+  // Jalankan saat halaman pertama load
+  fetchNotifStok();
+
+  // Polling tiap 15 detik
+  setInterval(fetchNotifStok, NOTIF_INTERVAL_MS);
+
+  // Tutup panel saat klik di luar
+  document.addEventListener('click', function(e) {
+    const panel = document.getElementById('notif-panel');
+    const bell  = document.getElementById('notif-bell');
+    if (panel.classList.contains('open') && !panel.contains(e.target) && !bell.contains(e.target)) {
+      panel.classList.remove('open');
+    }
+  });
 </script>
 @endsection
