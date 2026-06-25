@@ -48,7 +48,6 @@ class AuthController extends Controller
 
         if ($user && Hash::check($request->password, $user->password)) {
             Session::put('username', $user->username);
-            Session::put('role', $user->role);
             Session::put('status', 'login');
 
             if ($user->role === 'manager') {
@@ -64,7 +63,7 @@ class AuthController extends Controller
     public function index()
     {
         if (!Session::get('status')) {
-            return redirect()->route('login.form');
+            return redirect()->route('index');
         }
 
         $totalBarang   = Barang::count();

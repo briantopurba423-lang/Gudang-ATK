@@ -288,29 +288,36 @@
 
 <section class="how-bg">
     <div class="section-title">
-        <h2>Cara Kerja</h2>
-        <p>Hanya 3 langkah untuk mulai mengelola stok Alat Tulis Kantor kamu</p>
+        <h2>DEVELOPER</h2>
     </div>
 
-    <div class="steps">
-        <div class="step">
-            <div class="num-circle">1</div>
-            <h3>Login ke Sistem</h3>
-            <p>Masuk menggunakan akun yang telah diberikan admin.</p>
-        </div>
+    <div style="
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        gap:30px;
+        flex-wrap:nowrap;
+    ">
 
-        <div class="step">
-            <div class="num-circle">2</div>
-            <h3>Input Data Barang</h3>
-            <p>Tambahkan data barang beserta kategori dan stok awal.</p>
-        </div>
 
-        <div class="step">
-            <div class="num-circle">3</div>
-            <h3>Catat Transaksi</h3>
-            <p>Catat barang masuk dan keluar, stok otomatis terupdate.</p>
-        </div>
+     <div style="text-align:center;">
+        <img src="{{ asset('patrik.jpeg') }}"
+             style="width:180px;height:250px;border-radius:15px;object-fit:cover;">
+        <p style="margin-top:5px;font-size:20px;color:#475569;">PATRIK</p>
     </div>
+
+      <div style="text-align:center;">
+        <img src="{{ asset('fahira.jpeg') }}"
+             style="width:180px;height:250px;border-radius:15px;object-fit:cover;">
+        <p style="margin-top:5px;">FAHIRA</p>
+    </div>
+    
+    <div style="text-align:center;">
+    <img src="{{ asset('brii.jpeg') }}"
+         style="width:180px;height:250px;border-radius:15px;object-fit:cover;">
+    <p style="margin-top:10px;font-size:20px;color:#475569;">BRII PURBA</p>
+</div>
+
 </section>
 
 @endsection
